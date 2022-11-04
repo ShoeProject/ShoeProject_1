@@ -1,0 +1,17 @@
+.styleTest {
+    width: 100px;
+    height: 100px;
+    color: rgb(102, 210, 210);
+    background-color: antiquewhite;
+}
+
+.colcontent{    
+    width: 100px;
+    height: 100px;
+    background-color: rgb(197, 221, 223);
+    border-radius: 50px;
+}
+
+.sizebtn{
+    width: 50px;
+}
