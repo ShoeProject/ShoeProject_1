@@ -126,6 +126,7 @@ if (isset($_POST['prodbtn'])) {
                 <div class="container-fluid">
                     <!-- <form action="" method="post"><button type="submit" name="prodbtn">product</button></form> -->
                     <?php 
+                        
                         include_once 'feature/staff.php';
                     ?> 
                    
