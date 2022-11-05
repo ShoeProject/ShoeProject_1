@@ -61,7 +61,7 @@ use ShoeApp\Logic\ProductLogic;
 
 //$dbConnection = (new DatabaseConnector())->getConnection(); if you need use this code
 if (isset($_POST['prodbtn'])) {
-  $prod = new ProductLogic($dbConnection);
+  
   $name = $_POST('name');
   $serialNo = $_POST('serialNo');
   $itemName = $_POST('itemName');
@@ -71,7 +71,7 @@ if (isset($_POST['prodbtn'])) {
   $subCatergoryId = $_POST('subCatergoryId');
 
   $input = array($name,$serialNo,$itemName,$itemSize,$itemColor,$categoryId,$subCatergoryId);
-  $prod->insert($input);
+
     
 }
 
