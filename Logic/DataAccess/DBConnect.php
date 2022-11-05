@@ -9,27 +9,23 @@ class DBConnect{
 	private $conn = null;
 	public $name = "shoeProject";
 	private static $_instance;
-
-	public static function getInstance(){
-        if(!self::$_instance) {
-            self::$_instance = new self();
-        }
-        return self::$_instance;
-    }
 	
 	function __construct(){
 		$this->conn = new \mysqli($this->servername,$this->username,$this->password,$this->database);		
 	}
 
 	function executeQuery($sql){
+		$result = null;
 		if ($this->conn->connect_error) {
 			die("Connection failure: ". $this->conn->connect_error);
 		}
-		if ($this->conn->query($sql) === TRUE) {
+		if ($result = $this->conn->query($sql)) {
 			echo "Database execute succeed..!";
+			return $result;
 		} else {
 			echo "Error: " . $this->conn->error;
 		}
+		return $result;
 	}
 
 	function closeConn(){
@@ -42,5 +38,5 @@ class DBConnect{
 }
 
 $dbConn = new DBConnect();
-echo $dbConn;
+//echo $dbConn->getName();
 
