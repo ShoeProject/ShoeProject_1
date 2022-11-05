@@ -42,9 +42,9 @@ SET time_zone = "+00:00";
 --
 -- Indexes for table `employee`
 --
-ALTER TABLE `employee`
-  ADD PRIMARY KEY (`id`);
-COMMIT;
+-- ALTER TABLE `employee`
+--   ADD PRIMARY KEY (`id`);
+-- COMMIT;
 
 -- create database shoe_db;
 --executed -->
@@ -121,8 +121,8 @@ create table employee_type(
 
 create table order(
    id varchar(40) default (uuid_to_bin(uuid())) not null,
-   order_date date,
-   order_time date,
+   order_date datetime,
+   order_time datetime, 
    CONSTRAINT PK_order PRIMARY KEY(id)
 );
 
