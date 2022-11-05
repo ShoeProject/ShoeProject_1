@@ -19,23 +19,37 @@
                     </a> -->
             <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                 <li class="nav-item">
-                    <a href="#" class="nav-link align-middle px-0">
+                    <a href="home.php" class="nav-link align-middle px-0">
                         <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
                     </a>
                 </li>                
                 <li>
-                    <a href="feature/staff.php" class="nav-link px-0 align-middle">
-                        <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Staff</span></a>
+                    <a href="staff.php" class="nav-link px-0 align-middle">
+                        <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Staff</span>
+                    </a>
                 </li>                
                 <li>
-                    <a href="feature/product.php" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                        <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Products</span> </a>
+                    <a href="product.php" class="nav-link px-0 align-middle">
+                        <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Products</span> 
+                    </a>
 
                 </li>
                 <li>
-                    <a href="#" class="nav-link px-0 align-middle">
-                        <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Add News And Notify</span> </a>
+                    <a href="newsAndNotify.php" class="nav-link px-0 align-middle">
+                        <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Add News And Notify</span> 
+                    </a>
                 </li>
+                <li>
+                    <a href="category.php" class="nav-link px-0 align-middle">
+                        <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Add Category</span> 
+                    </a>
+                </li>
+                <li>
+                    <a href="subCategory.php" class="nav-link px-0 align-middle">
+                        <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Add Sub Category</span> 
+                    </a>
+                </li>
+
             </ul>
             <hr>
         </div>

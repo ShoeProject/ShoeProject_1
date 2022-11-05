@@ -24,9 +24,7 @@ if (isset($_POST['prodbtn'])) {
         <div class="col py-1">
             <div class="container-fluid">
                 <!-- <form action="" method="post"><button type="submit" name="prodbtn">product</button></form> -->
-                <?php
-                    include_once 'feature/staff.php';
-                ?> 
+                
             </div>
 
         </div>
