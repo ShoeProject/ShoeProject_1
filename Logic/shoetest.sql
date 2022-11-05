@@ -1,3 +1,26 @@
+create table product_categories(
+    id VARCHAR(40) DEFAULT (uuid()) not null,
+    name varchar(100),
+    description text,
+    created_date datetime,
+    updated_date datetime,
+    CONSTRAINT PK_product_categories PRIMARY KEY(id)
+);
+create table orders(
+   id VARCHAR(40) DEFAULT (uuid()) not null,
+   order_date datetime,
+   order_time datetime, 
+   CONSTRAINT PK_order PRIMARY KEY(id)
+);
+
+create table product_sub_categories(
+    id VARCHAR(40) DEFAULT (uuid()) not null,
+    name varchar(100),
+    description text,
+    created_date datetime,
+    updated_date datetime,
+    CONSTRAINT PK_Goods_receive_note PRIMARY KEY(id)
+);
 
 create table product(
     id VARCHAR(40) DEFAULT (uuid()) not null,
@@ -17,30 +40,32 @@ create table product(
     references product_sub_categories(id)
 );
 
-create table product_categories(
-    id VARCHAR(40) DEFAULT (uuid()) not null,
-    name varchar(100),
-    description text,
-    created_date datetime,
-    updated_date datetime,
-    CONSTRAINT PK_product_categories PRIMARY KEY(id)
+create table news_And_Notification(
+  id varchar(40) default (uuid()) not null,
+  newsHeading varchar(300),
+  newsBody varchar(300),
+  CONSTRAINT PK_news_And_Notification PRIMARY KEY(id)
 );
 
-create table product_sub_categories(
-    id VARCHAR(40) DEFAULT (uuid()) not null,
-    name varchar(100),
-    description text,
-    created_date datetime,
-    updated_date datetime,
-    CONSTRAINT PK_Goods_receive_note PRIMARY KEY(id)
+create table inquiry(
+  id varchar(40) default (uuid()) not null,
+  inquiry_subject varchar(200),
+  inquiry varchar(200),
+  CONSTRAINT PK_inquiry PRIMARY KEY(id)
 );
---exucuted --<<
+
+create table feedback(
+   id varchar(40) default (uuid()) not null,
+   feedback varchar(200),
+   CONSTRAINT PK_feedback PRIMARY KEY(id)
+);
+
 create table customer(
     id VARCHAR(40) DEFAULT (uuid()) not null,
     name varchar(100),
     address varchar(200),
     phone_no varchar(15),
-    age int,
+    age smallint,
     created_date datetime,
     updated_date datetime,
     feedback_id varchar(20),
@@ -52,7 +77,7 @@ create table customer(
     CONSTRAINT FK_inquiry foreign key(inquiry_id)
     references inquiry(id),
     CONSTRAINT FK_order foreign key(order_id)
-    references order(id)
+    references orders(id)
 );
 
 create table employee(
@@ -60,28 +85,21 @@ create table employee(
     name varchar(100),
     address varchar(200),
     phone_no varchar(15),
-    age int,
-    order_id varchar()
+    age smallint,
+    order_id varchar(),
     created_date datetime,
     updated_date datetime,
     CONSTRAINT PK_Employee PRIMARY KEY(id),
     CONSTRAINT FK_Employee foreign key(order_id)
-    reference order(id),
+    references orders(id)
 );
 
 create table employee_type(
   id VARCHAR(40) DEFAULT (uuid()) not null,
   designation varchar(40),
   CONSTRAINT PK_employee_type PRIMARY KEY(id)
-
 );
 
-create table order(
-   id VARCHAR(40) DEFAULT (uuid()) not null,
-   order_date datetime,
-   order_time datetime, 
-   CONSTRAINT PK_order PRIMARY KEY(id)
-);
 
 create table cart(
     id varchar(40) default (uuid()) not null,
@@ -100,23 +118,4 @@ create table file(
     CONSTRAINT PK_Goods_receive_note PRIMARY KEY(id)
 );
 
-create table news_And_Notification(
-  id varchar(40) default (uuid()) not null,
-  newsHeading varchar(300),
-  newsBody varchar(300),
-  CONSTRAINT PK_news_And_Notification PRIMARY KEY(id)
-);
 
-create table inquiry(
-  id varchar(40) default (uuid()) not null,
-  inquiry_subject varchar(200);
-  inquiry varchar(200);
-  CONSTRAINT PK_inquiry PRIMARY KEY(id)
-
-);
-
-create table feedback(
-   id varchar(40) default (uuid()) not null,
-   feedback varchar(200),
-   CONSTRAINT PK_feedback PRIMARY KEY(id)
-);
