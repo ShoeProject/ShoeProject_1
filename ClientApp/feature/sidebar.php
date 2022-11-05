@@ -36,17 +36,22 @@
                 </li>
                 <li>
                     <a href="newsAndNotify.php" class="nav-link px-0 align-middle">
-                        <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Add News And Notify</span> 
+                    <i class="bi bi-chat-dots-fill"></i></i></i></i></i></i> <span class="ms-1 d-none d-sm-inline">Add News And Notify</span> 
                     </a>
                 </li>
                 <li>
                     <a href="category.php" class="nav-link px-0 align-middle">
-                        <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Add Category</span> 
+                    <i class="bi bi-cart4"></i></i> <span class="ms-1 d-none d-sm-inline">Add Category</span> 
                     </a>
                 </li>
                 <li>
                     <a href="subCategory.php" class="nav-link px-0 align-middle">
-                        <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Add Sub Category</span> 
+                    <i class="bi bi-cart4"></i> <span class="ms-1 d-none d-sm-inline">Add Sub Category</span> 
+                    </a>
+                </li>
+                <li>
+                    <a href="customerView.php" class="nav-link px-0 align-middle">
+                        <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Manage Customers</span> 
                     </a>
                 </li>
 
