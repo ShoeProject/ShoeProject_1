@@ -1,5 +1,5 @@
 <?php
-//namespace ShoeApp\Logic;
+//namespace Logic\DataAccess;
 
 class DBConnect{
 	private $servername = "localhost";
@@ -7,6 +7,7 @@ class DBConnect{
 	private $password = "";
 	private $database = "shoe_db";
 	private $conn = null;
+	public $name = "shoeProject";
 
 	function __construct(){
 		$this->conn = new \mysqli($this->servername,$this->username,$this->password,$this->database);		
@@ -26,6 +27,12 @@ class DBConnect{
 	function closeConn(){
 		$this->conn->close();
 	}
+
+	function getName(){
+		return $this->name;
+	}
 }
 
 $dbConn = new DBConnect();
+echo $dbConn->getName();
+

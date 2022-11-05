@@ -1,7 +1,8 @@
 <?php
 // namespace feature\staff;
-// use ShoeApp\Logic\DBConnect;
-require_once('../Logic/DataAccess/class.DBConnect.php');
+// //use Logic;
+// use Logic\DataAccess\DBConnect;
+include('../ShoeProject_1/Logic/DataAccess/DBConnect.php');
 
 ?>
 <form class="w-75" method="POST" action="">
@@ -36,15 +37,19 @@ require_once('../Logic/DataAccess/class.DBConnect.php');
 
 <?php
 //if (isset($_POST['prodbtn'])) {
+  //$dbConn = new DBConnect();
 
-  $name = $_POST['name'];
-  $address = $_POST['address'];
-  $phone = $_POST['phone_no'];
-  $age = $_POST['age'];
+  // $name = $_POST['name'];
+  // $address = $_POST['address'];
+  // $phone = $_POST['phone_no'];
+  // $age = $_POST['age'];
 
-  $sql = "INSERT INTO employee (name, address, phone_no,age)VALUES ('$name',  '$address', $phone,'$age')";
-  $dbConn->executeQuery($sql);  
-  $dbConn->closeConn();
+  echo $dbConn->getName();
+
+  // $sql = "INSERT INTO employee (name, address, phone_no,age)VALUES ('$name',  '$address', $phone,'$age')";
+  // $dbConn->executeQuery($sql);  
+  // $dbConn->closeConn();
+  
 
 
 ?>
