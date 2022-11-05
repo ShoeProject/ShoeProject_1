@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '7d578b78ba0ee7fc5f9279261254507cf3f86df2',
+        'reference' => '234967a1ff1911632eaf38216c3e7b591976c645',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '7d578b78ba0ee7fc5f9279261254507cf3f86df2',
+            'reference' => '234967a1ff1911632eaf38216c3e7b591976c645',
             'dev_requirement' => false,
         ),
         'components/jquery' => array(
