@@ -8,7 +8,15 @@ class DBConnect{
 	private $database = "shoe_db";
 	private $conn = null;
 	public $name = "shoeProject";
+	private static $_instance;
 
+	public static function getInstance(){
+        if(!self::$_instance) {
+            self::$_instance = new self();
+        }
+        return self::$_instance;
+    }
+	
 	function __construct(){
 		$this->conn = new \mysqli($this->servername,$this->username,$this->password,$this->database);		
 	}
@@ -34,5 +42,5 @@ class DBConnect{
 }
 
 $dbConn = new DBConnect();
-echo $dbConn->getName();
+//echo $dbConn->getName();
 

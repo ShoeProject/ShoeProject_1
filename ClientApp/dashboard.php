@@ -66,8 +66,8 @@ if (isset($_POST['prodbtn'])) {
                             </ul>
                         </li>
                         <li>
-                            <a href="#" class="nav-link px-0 align-middle">
-                                <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Orders</span></a>
+                            <a href="feature/staff.php" class="nav-link px-0 align-middle">
+                                <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Staff</span></a>
                         </li>
                         <li>
                             <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
@@ -125,10 +125,10 @@ if (isset($_POST['prodbtn'])) {
             <div class="col py-1">               
                 <div class="container-fluid">
                     <!-- <form action="" method="post"><button type="submit" name="prodbtn">product</button></form> -->
-                    <?php 
+                    <!-- <?php 
                         
                         include_once 'feature/staff.php';
-                    ?> 
+                    ?>  -->
                    
                 </div>
 
