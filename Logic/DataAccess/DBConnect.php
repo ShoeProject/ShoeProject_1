@@ -20,7 +20,7 @@ class DBConnect{
 			die("Connection failure: ". $this->conn->connect_error);
 		}
 		if ($result = $this->conn->query($sql)) {
-			echo "Database execute succeed..!";
+			// show bootstrap alert
 			return $result;
 		} else {
 			echo "Error: " . $this->conn->error;
