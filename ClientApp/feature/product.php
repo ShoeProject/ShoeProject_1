@@ -2,32 +2,28 @@
 $path = $_SERVER['DOCUMENT_ROOT'];
 $path .= "/ShoeProject_1/Logic/DataAccess/";
 
-require_once($path . 'DBConnect.php');
+include $path.'DBConnect.php';
+
+
 if (isset($_POST['prodbtn'])) {
-  $productId=$_POST['pid'];
   $name = $_POST['name'];
+  $price = $_POST['price'];
   $serialNo = $_POST['serialNo'];
-  $itemName = $_POST['itemName'];
   $itemSize = $_POST['itemSize'];
   $itemColor = $_POST['itemColor'];
   $categoryId = $_POST['categoryId'];
   $subCatergoryId = $_POST['subCatergoryId'];
   
-  $query = "INSERT INTO product (id, name, price, serial_no, item_price,item_color,item_size,category_id,sub_category_id) VALUES ('$productId', '$name', '$serialNo', '$itemName', '$itemSize','$itemColor','$categoryId','$subCatergoryId')";
-  if ($dbConn->query($query) === TRUE) {
+  $query = "INSERT INTO product (name, item_price, serial_no,item_color,item_size,category_id,sub_category_id) VALUES ('$name',$price, '$serialNo','$itemColor',$itemSize,null,null)";
+  
+  if ($dbConn->executeQuery($query) === true) {
     echo "New record created successfully";
   } else {
     echo "Error: " . $query . "<br>" . $dbConn->error;
-  }
-	
+  }	
 }
-
-
 ?>
-
-
 <html>
-
 <head>
   <title>Login Page</title>
   <link href="../../vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -37,7 +33,6 @@ if (isset($_POST['prodbtn'])) {
   <script src="../../vendor/components/jquery.slim.min.js"></script>
   <script src="asset/js/main.js"></script>
 </head>
-
 <body>
   <div class="container-fluid">
     <div><?php include '../shared/header.php'; ?></div>
@@ -47,10 +42,7 @@ if (isset($_POST['prodbtn'])) {
         <div class="container-fluid">
           <form class="w-75" method="POST" action="">
             <fieldset enabled>
-              <legend>Add Products</legend>
-              <div class="mb-4 pt-5">
-                <input type="text" name="pid" class="form-control" placeholder="Product Id">
-              </div>
+              <legend>Add Products</legend>              
               <div class="mb-4 pt-5">
                 <input type="text" name="name" class="form-control" placeholder="Product Name">
               </div>
@@ -58,9 +50,8 @@ if (isset($_POST['prodbtn'])) {
                 <input type="text" name="serialNo" class="form-control" placeholder="Serial Number">
               </div>
               <div class="mb-4">
-                <input type="text" name="itemName" class="form-control" placeholder="Item Price">
+                <input type="text" name="price" class="form-control" placeholder="Item Price">
               </div>
-
               <div class="mb-4">
                 <input type="text" name="itemSize" class="form-control" placeholder="Item Size">
               </div>
@@ -72,7 +63,6 @@ if (isset($_POST['prodbtn'])) {
                   <option>Blue</option>
                 </select>
               </div>
-
               <div class="mb-4">
                 <label for="disabledSelect" class="form-label">Category Id</label>
                 <select name="categoryId" class="form-select">
@@ -81,7 +71,6 @@ if (isset($_POST['prodbtn'])) {
                   <option>Blue</option>
                 </select>
               </div>
-
               <div class="mb-4">
                 <label for="disabledSelect" class="form-label">Sub Category Id</label>
                 <select name="subCatergoryId" class="form-select">
@@ -89,22 +78,14 @@ if (isset($_POST['prodbtn'])) {
                   <option>Green</option>
                   <option>Blue</option>
                 </select>
-              </div>
-
-              
-
-             
-
+              </div>          
               <button type="submit" name="prodbtn" class="btn btn-warning">Submit</button>
               <button type="submit" class="btn btn-warning">Reset</button>
             </fieldset>
           </form>
         </div>
-
       </div>
     </div>
   </div>
-
 </body>
-
 </html>
