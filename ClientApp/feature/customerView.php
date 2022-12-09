@@ -21,15 +21,41 @@
                     
                    <form>
                    <fieldset enabled>
-                     <legend>News and Notification</legend>
-                     <div class="mb-4 pt-5 w-50">
-       
-                       <input type="text" id="disabledTextInput" class="form-control" placeholder="News Heading">
-                     </div>
-                     <div class="mb-3 pb-4 w-50">
-                       <input type="text" id="disabledTextInput" class="form-control" placeholder="news Body">
-       
-                     </div>
+                     <legend>Customer Details</legend>
+                     <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Customer Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">email</th>
+      <th scope="col">Contact Number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>fat</td>
+      <td>mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>@twitter</td>
+      <td>@mdo</td>
+      <td>@mdo</td>
+    </tr>
+  </tbody>
+</table>
                      <div>
                        <button type="submit" class="btn btn-warning ">ADD</button>
                        <button type="submit" class="btn btn-warning ms-3">Reset</button>
