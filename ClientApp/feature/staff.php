@@ -50,7 +50,7 @@ include('../../Logic/DataAccess/DBConnect.php');
                 </select>
               </div>
               <div class="sizebtn">
-                <button type="submit" name="prodbtn" class="btn btn-warning">Create Member</button>
+                <button type="submit" name="createmember" class="btn btn-warning">Create Member</button>
                 <button type="submit" name="updbtn" class="btn btn-warning">Update Member</button>
                 <button type="submit" class="btn btn-warning ">Reset</button>
               </div>
@@ -68,7 +68,7 @@ include('../../Logic/DataAccess/DBConnect.php');
 
 
 <?php
-if (isset($_POST['prodbtn'])) {
+if (isset($_POST['createmember'])) {
   $dbConn1 = new DBConnect();
 
   $name = $_POST['name'];

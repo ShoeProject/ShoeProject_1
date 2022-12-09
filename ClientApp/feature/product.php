@@ -17,7 +17,8 @@ if (isset($_POST['prodbtn'])) {
   $query = "INSERT INTO product (name, item_price, serial_no,item_color,item_size,category_id,sub_category_id) VALUES ('$name',$price, '$serialNo','$itemColor',$itemSize,null,null)";
   
   if ($dbConn->executeQuery($query) === true) {
-    echo "New record created successfully";
+    echo "<script>alert('Database execute succeed..!');</script>";
+    header('location: view.php');
   } else {
     echo "Error: " . $query . "<br>" . $dbConn->error;
   }	

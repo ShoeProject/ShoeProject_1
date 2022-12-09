@@ -29,7 +29,7 @@
                     </a>
                 </li>                
                 <li>
-                    <a href="product.php" class="nav-link px-0 align-middle">
+                    <a href="view.php" class="nav-link px-0 align-middle">
                         <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Products</span> 
                     </a>
 
