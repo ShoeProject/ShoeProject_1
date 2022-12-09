@@ -79,6 +79,11 @@ if (isset($_POST['prodbtn'])) {
 
   $sql = "INSERT INTO employee (name, address, phone_no,age)VALUES ('$name',  '$address', $phone,'$age')";
   $dbConn1->executeQuery($sql);
+  if ($dbConn->$sql($query) === TRUE) {
+    echo "New record created successfully";
+  } else {
+    echo "Error: " . $query . "<br>" . $dbConn->error;
+  }
   $dbConn1->closeConn();
 }
 

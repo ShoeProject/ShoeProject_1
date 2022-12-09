@@ -1,20 +1,26 @@
 <?php
+$path = $_SERVER['DOCUMENT_ROOT'];
+$path .= "/ShoeProject_1/Logic/DataAccess/";
 
-// use ShoeApp\Logic\ProductLogic;
-
-// //$dbConnection = (new DatabaseConnector())->getConnection(); if you need use this code
-// if (isset($_POST['prodbtn'])) {
-
-//   $name = $_POST('name');
-//   $serialNo = $_POST('serialNo');
-//   $itemName = $_POST('itemName');
-//   $itemSize = $_POST('itemSize');
-//   $itemColor = $_POST('itemColor');
-//   $categoryId = $_POST('categoryId');
-//   $subCatergoryId = $_POST('subCatergoryId');
-
-//   $input = array($name, $serialNo, $itemName, $itemSize, $itemColor, $categoryId, $subCatergoryId);
-// }
+require_once($path . 'DBConnect.php');
+if (isset($_POST['prodbtn'])) {
+  $productId=$_POST['pid'];
+  $name = $_POST['name'];
+  $serialNo = $_POST['serialNo'];
+  $itemName = $_POST['itemName'];
+  $itemSize = $_POST['itemSize'];
+  $itemColor = $_POST['itemColor'];
+  $categoryId = $_POST['categoryId'];
+  $subCatergoryId = $_POST['subCatergoryId'];
+  
+  $query = "INSERT INTO product (id, name, price, serial_no, item_price,item_color,item_size,category_id,sub_category_id) VALUES ('$productId', '$name', '$serialNo', '$itemName', '$itemSize','$itemColor','$categoryId','$subCatergoryId')";
+  if ($dbConn->query($query) === TRUE) {
+    echo "New record created successfully";
+  } else {
+    echo "Error: " . $query . "<br>" . $dbConn->error;
+  }
+	
+}
 
 
 ?>
@@ -39,9 +45,12 @@
       <?php include 'sidebar.php' ?>
       <div class="col py-1">
         <div class="container-fluid">
-          <form class="w-75" method="" action="POST">
+          <form class="w-75" method="POST" action="">
             <fieldset enabled>
               <legend>Add Products</legend>
+              <div class="mb-4 pt-5">
+                <input type="text" name="pid" class="form-control" placeholder="Product Id">
+              </div>
               <div class="mb-4 pt-5">
                 <input type="text" name="name" class="form-control" placeholder="Product Name">
               </div>
@@ -82,13 +91,9 @@
                 </select>
               </div>
 
-              <div class="mb-4 pt-5">
-                <input name="adedDate" type="date" class="form-control">
-              </div>
+              
 
-              <div class="mb-4 pt-5">
-                <input name="updatedDate" type="date" class="form-control">
-              </div>
+             
 
               <button type="submit" name="prodbtn" class="btn btn-warning">Submit</button>
               <button type="submit" class="btn btn-warning">Reset</button>
