@@ -121,7 +121,7 @@ $res = $dbConn->executeQuery($ReadSql);
 			</div>
 		</div>
 	</div>
-	<div id="confirm" class="modal hide fade">
+	<!-- <div id="confirm" class="modal hide fade">
 	<div class="modal-body">
 		Are you sure?
 	</div>
@@ -129,7 +129,7 @@ $res = $dbConn->executeQuery($ReadSql);
 
 		<button type="button" data-dismiss="modal" class="btn">Cancel</button>
 	</div>
-</div>
+</div> -->
 </body>
 
 </html>
