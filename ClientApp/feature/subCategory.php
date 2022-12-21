@@ -1,3 +1,25 @@
+<?php
+$path = $_SERVER['DOCUMENT_ROOT'];
+$path .= "/ShoeProject_1/Logic/DataAccess/";
+
+include $path.'DBConnect.php';
+
+
+if (isset($_POST['btnSubCategory'])) {
+  $name = $_POST['sub_category_name'];
+  $description = $_POST['sub_category_description'];
+ 
+  
+  $query = "INSERT INTO product_sub_categories (name, description) VALUES ('$name','$description')";
+  
+  if ($dbConn->executeQuery($query) === true) {
+    echo "<script>alert('Database execute succeed..!');</script>";
+    header('location: SubCategoryView.php');
+  } else {
+    echo "Error: " . $query . "<br>" . $dbConn->error;
+  }	
+}
+?>
 <html>
 
 <head>
@@ -17,19 +39,19 @@
       <?php include 'sidebar.php' ?>
       <div class="col py-1">
         <div class="container-fluid">
-          <form>
+          <form action ="" method ="post">
             <fieldset enabled>
               <legend>Sub Categories</legend>
               <div class="mb-4 pt-5 w-50">
 
-                <input type="text" id="subname" class="form-control" placeholder="Sub Category Name">
+                <input type="text" id="subname" name ="sub_category_name"class="form-control" placeholder="Sub Category Name">
               </div>
               <div class="mb-3 pb-4 w-50">
-                <input type="text" id="description" class="form-control" placeholder="Description">
+                <input type="text" id="description" name ="sub_category_description" class="form-control" placeholder="Description">
 
               </div>
               <div>
-                <button type="submit" class="btn btn-warning ">ADD</button>
+                <button type="submit" name="btnSubCategory" class="btn btn-warning ">ADD</button>
                 <button type="submit" class="btn btn-warning ms-3">Reset</button>
               </div>
             </fieldset>

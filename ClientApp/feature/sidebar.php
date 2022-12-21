@@ -45,7 +45,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="subCategory.php" class="nav-link px-0 align-middle">
+                    <a href="SubCategoryView.php" class="nav-link px-0 align-middle">
                     <i class="bi bi-cart4"></i> <span class="ms-1 d-none d-sm-inline">Add Sub Category</span> 
                     </a>
                 </li>
