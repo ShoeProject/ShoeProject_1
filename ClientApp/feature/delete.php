@@ -5,7 +5,7 @@ $path .= "/ShoeProject_1/Logic/DataAccess/";
 include $path . 'DBConnect.php';
 
 $id = $_GET['id'];
-$DelSql = "DELETE FROM product WHERE id=$id";
+$DelSql = "DELETE FROM product WHERE id='$id'";
 $res =$dbConn->executeQuery($DelSql);
 if($res){
 	header('location: view.php');

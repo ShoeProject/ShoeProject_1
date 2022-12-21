@@ -50,7 +50,7 @@ if(isset($_POST) & !empty($_POST)){
 ?>
 
 <html>
-<head>
+<!-- <head>
   <title>Login Page</title>
   <link href="../../vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="../../vendor/twbs/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
@@ -58,7 +58,7 @@ if(isset($_POST) & !empty($_POST)){
   <script src="../../vendor/twbs/bootstrap/dist/js/bootstrap.bundle.js"></script>
   <script src="../../vendor/components/jquery.slim.min.js"></script>
   <script src="asset/js/main.js"></script>
-</head>
+</head> -->
 	<body>
 	<div class="container-fluid">
     <div><?php include '../shared/header.php'; ?></div>
