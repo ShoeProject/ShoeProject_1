@@ -40,7 +40,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="category.php" class="nav-link px-0 align-middle">
+                    <a href="CategoryView.php" class="nav-link px-0 align-middle">
                     <i class="bi bi-cart4"></i></i> <span class="ms-1 d-none d-sm-inline">Add Category</span> 
                     </a>
                 </li>
