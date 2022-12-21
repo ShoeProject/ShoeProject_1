@@ -49,7 +49,7 @@ if(isset($_POST) & !empty($_POST)){
 
 
 <head>
-  <title>Login Page</title>
+  <title>Category Page</title>
   <link href="../../vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="../../vendor/twbs/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
   <link rel="stylesheet" href="asset/css/style.css" />
@@ -67,7 +67,7 @@ if(isset($_POST) & !empty($_POST)){
 
 	<div class="container">
 	<?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
-		<h2 class="my-4">Add New Category</h2>
+		<h2 class="my-4">Update Category</h2>
 		<form method="post" enctype="multipart/form-data">
 			<div class="form-group">
                 <label>Name</label>

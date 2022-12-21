@@ -8,14 +8,14 @@ include $path . 'DBConnect.php';
 
 $id = $_GET['id'];
 
-$SelSql = "SELECT * FROM product_sub_categories WHERE id='$id'";
+$SelSql = "SELECT * FROM news_and_notification WHERE id='$id'";
 $res = $dbConn->executeQuery($SelSql);
 $r =$res->fetch_assoc();
 
 
 if(isset($_POST) & !empty($_POST)){
-	$name = ($_POST['name']);
-	$description = ($_POST['description']);
+	$news_heading = ($_POST['newsHeading']);
+	$news_content = ($_POST['newsBody']);
 	
 	// store n upload image
     // $image = $_FILES['image']['name']; 
@@ -34,12 +34,12 @@ if(isset($_POST) & !empty($_POST)){
     // }
 
     // Execute query
-	$editquery = "UPDATE product_sub_categories SET name='$name',description ='$description' WHERE id='$id'";
+	$editquery = "UPDATE news_and_notification SET newsHeading='$news_heading',newsBody ='$news_content' WHERE id='$id'";
 	
 	$res = $dbConn->executeQuery($editquery);
     echo "<script>alert('Database execute succeed..!');</script>";
 	if($res){
-		header('location: SubCategoryView.php');
+		header('location: NewsView.php');
 	}else{
 		$fmsg = "Failed to Insert data.";
 		print_r($res->error_list);
@@ -49,7 +49,7 @@ if(isset($_POST) & !empty($_POST)){
 
 
 <head>
-  <title>Sub-Category Page</title>
+  <title>News & Notify Page</title>
   <link href="../../vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="../../vendor/twbs/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
   <link rel="stylesheet" href="asset/css/style.css" />
@@ -67,15 +67,15 @@ if(isset($_POST) & !empty($_POST)){
 
 	<div class="container">
 	<?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
-		<h2 class="my-4">UPDATE Sub-Category</h2>
+		<h2 class="my-4">UPDATE News</h2>
 		<form method="post" enctype="multipart/form-data">
 			<div class="form-group">
                 <label>Name</label>
-				<input type="text" class="form-control" name="sub_category_name" value="<?php echo $r['name'];?>" required/>
+				<input type="text" class="form-control" name="newsHeading" value="<?php echo $r['newsHeading'];?>" required/>
             </div> 
             <div class="form-group">
                 <label>Serial Number</label>
-				<input type="text" class="form-control" name="sub_category_description" value="<?php echo $r['description'];?>" required/>
+				<input type="text" class="form-control" name="news_content" value="<?php echo $r['newsBody'];?>" required/>
             </div> 
            
 

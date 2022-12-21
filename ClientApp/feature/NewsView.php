@@ -5,7 +5,7 @@ $path .= "/ShoeProject_1/Logic/DataAccess/";
 include $path . 'DBConnect.php';
 
 
-$ReadSql = "SELECT * FROM product_sub_categories";
+$ReadSql = "SELECT * FROM news_and_notification";
 $res = $dbConn->executeQuery($ReadSql);
 
 ?>
@@ -14,7 +14,7 @@ $res = $dbConn->executeQuery($ReadSql);
 <html>
 
 <head>
-	<title>Sub-Category Page</title>
+	<title>News& Notify Page</title>
 	<link href="../../vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 	<link href="../../vendor/twbs/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
 	<link rel="stylesheet" href="../asset/css/style.css" />
@@ -31,14 +31,14 @@ $res = $dbConn->executeQuery($ReadSql);
 			<?php include 'sidebar.php' ?>
 			<div class="container-fluid my-4">
 				<div class="row my-2">
-					<h2> Shop - Sub Categories</h2>
-					<a href="subCategory.php"><button type="button" class="btn btn-primary ml-4 pl-2">Add New</button></a>
+					<h2> Shop - News & Notification Center</h2>
+					<a href="newsAndNotify.php"><button type="button" class="btn btn-primary ml-4 pl-2">Add New</button></a>
 				</div>
 				<table class="table ">
 					<thead>
 						<tr>
-							<th>Sub Category Name </th>
-							<th>Description</th>
+							<th>News Heading </th>
+							<th>Content</th>
 							<th>Action</th>
 						</tr>
 					</thead>
@@ -49,12 +49,12 @@ $res = $dbConn->executeQuery($ReadSql);
 						?>
 								<tr>
 									<!-- <th scope="row"></th>  -->
-									<td><?php echo $r['name']; ?></td>
-									<td> <?php echo $r['description']; ?></td>
+									<td><?php echo $r['newsHeading']; ?></td>
+									<td> <?php echo $r['newsBody']; ?></td>
 									
 									
 									<td>
-										<a href="SubCategoryUpdate.php?id=<?php echo $r['id']; ?>"><button type="button" class="btn btn-info">Edit</button></a>
+										<a href="NewsUpdate.php?id=<?php echo $r['id']; ?>"><button type="button" class="btn btn-info">Edit</button></a>
 										<button type="button" class="btn btn-danger btn-xs" data-bs-toggle="modal" data-bs-target="#myModal">
   Delete
 </button>
@@ -66,7 +66,7 @@ $res = $dbConn->executeQuery($ReadSql);
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Delete Sub-Category</h4>
+        <h4 class="modal-title">Delete the News</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
@@ -78,7 +78,7 @@ $res = $dbConn->executeQuery($ReadSql);
       <!-- Modal footer -->
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-		<a href="SubCategoryDelete.php?id=<?php echo $r['id']; ?>"><button type="button" class="btn btn-danger"> Yes, Delete</button></a>
+		<a href="NewsDelete.php?id=<?php echo $r['id']; ?>"><button type="button" class="btn btn-danger"> Yes, Delete</button></a>
       </div>
 
     </div>

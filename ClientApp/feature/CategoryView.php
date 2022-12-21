@@ -14,7 +14,7 @@ $res = $dbConn->executeQuery($ReadSql);
 <html>
 
 <head>
-	<title>Login Page</title>
+	<title>Category Page</title>
 	<link href="../../vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 	<link href="../../vendor/twbs/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
 	<link rel="stylesheet" href="../asset/css/style.css" />
@@ -66,7 +66,7 @@ $res = $dbConn->executeQuery($ReadSql);
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Delete Product</h4>
+        <h4 class="modal-title">Delete Category</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
