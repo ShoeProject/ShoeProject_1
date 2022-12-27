@@ -23,7 +23,7 @@ if (isset($_POST['btncategory'])) {
 <html>
 
 <head>
-  <title>Login Page</title>
+  <title>Category Page</title>
   <link href="../../vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="../../vendor/twbs/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
   <link rel="stylesheet" href="asset/css/style.css" />
