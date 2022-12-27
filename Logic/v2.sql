@@ -1,0 +1,1 @@
+ALTER table product ADD COLUMN image_name varchar(255);
