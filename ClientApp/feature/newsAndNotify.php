@@ -8,9 +8,22 @@ include $path.'DBConnect.php';
 if (isset($_POST['btnNews'])) {
   $news = $_POST['news_heading'];
   $news_content = $_POST['news_content'];
+  $image_name = $_FILES['productImage']['name'];
+  echo "<script>console.log(".$image_name.");</script>";
+  $dir="../Asset/images/news/";
+  $temp_name=$_FILES['productImage']['tmp_name'];
+  if($image_name!="")
+  {
+      if(file_exists($dir.$image_name))
+      {
+          $image_name= time().'_'.$image_name;
+      }
+      $fdir= $dir.$image_name;
+      move_uploaded_file($temp_name, $fdir);
+  }  
  
   
-  $query = "INSERT INTO news_and_notification (newsHeading, newsBody) VALUES ('$news','$news_content')";
+  $query = "INSERT INTO news_and_notification (newsHeading, newsBody,image_name) VALUES ('$news','$news_content','$image_name')";
   
   if ($dbConn->executeQuery($query) === true) {
     echo "<script>alert('Database execute succeed..!');</script>";
@@ -19,6 +32,8 @@ if (isset($_POST['btnNews'])) {
     echo "Error: " . $query . "<br>" . $dbConn->error;
   }	
 }
+
+
 ?>
 <html>
 
@@ -41,7 +56,7 @@ if (isset($_POST['btnNews'])) {
                 <div class="container-fluid">
                     <!-- <form action="" method="post"><button type="submit" name="prodbtn">product</button></form> -->
                     
-                   <form class="w-50" method="POST" action="">
+                   <form class="w-50" method="POST" action="" enctype="multipart/form-data">
                    <fieldset enabled>
                      <legend>News and Notification</legend>
                      <div class="mb-4 pt-5 w-50">
@@ -52,6 +67,10 @@ if (isset($_POST['btnNews'])) {
                        <input type="text" id="disabledTextInput" name ="news_content"class="form-control" placeholder="news Body">
        
                      </div>
+
+                     <div class="mb-4">
+              <input type="file" name="productImage" class="form-control" accept=".jpeg,.png,.gif,.jpg,.webp" placeholder="Add Image" >
+              </div>
                      <div>
                        <button type="submit" name ="btnNews"class="btn btn-warning ">ADD</button>
                        <button type="submit" class="btn btn-warning ms-3">Reset</button>
