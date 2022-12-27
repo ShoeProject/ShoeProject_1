@@ -15,46 +15,27 @@ if (isset($_POST['prodbtn'])) {
   $categoryId = $_POST['categoryId'];
   $subCatergoryId = $_POST['subCatergoryId'];
   $image_name = $_FILES['productImage']['name'];
-  echo "<script>alert('".$image_name."18');</script>";
-  //if(isset($_FILES['productImage']['name']))
-  //
-  echo "<script>alert('".$image_name."21');</script>";
-
-  //if($image_name!=""){
-  //echo "yes";
-  //$productImage = $_POST['productImage'];
-  
-  echo "<script>alert('".$image_name."');</script>";
-  $eml = end(explode('.',$image_name));
-  $image_name="shoe_".rand(000,999).'.'.$eml;
-  
-  $source_path=$_FILES['productImage']['tmp_name'];
-  $destination_path= "../Asset/images/".$image_name;
-
-  $upload = move_uploaded_file($source_path,$destination_path);
-  if($upload==false)
+  echo "<script>console.log(".$image_name.");</script>";
+  $dir="../Asset/images/products/";
+  $temp_name=$_FILES['productImage']['tmp_name'];
+  if($image_name!="")
   {
-      $_SESSION['upload'] ="<b><p style='color:green'>Failed to upload image.</p></b>";
-      header('location: view.php');
-      die();      
-  }
-  else
-  {
-      $image_name="";
-  }
-  //}
-// }else{
-//   echo "<script>alert('image not aded..!');</script>";
-// }
-$query = "INSERT INTO product (name, item_price,serial_no,item_color,item_size,category_id,sub_category_id,image_name) VALUES
-  ('$name',$price,'$serialNo','$itemColor',$itemSize,null,null,'$image_name')";
+      if(file_exists($dir.$image_name))
+      {
+          $image_name= time().'_'.$image_name;
+      }
+      $fdir= $dir.$image_name;
+      move_uploaded_file($temp_name, $fdir);
+  }  
+  $query = "INSERT INTO product (name, item_price,serial_no,item_color,item_size,category_id,sub_category_id,image_name) VALUES
+    ('$name',$price,'$serialNo','$itemColor',$itemSize,null,null,'$image_name')";
 
-if ($dbConn->executeQuery($query) === true) {
-  echo "<script>alert('Database execute succeed..!');</script>";
-  header('location: view.php');
-} else {
-  echo "Error: " . $query . "<br>" . $dbConn->error;
-}	
+  if ($dbConn->executeQuery($query) === true) {
+    echo "<script>alert('Database execute succeed..!');</script>";
+    header('location: view.php');
+  } else {
+    echo "Error: " . $query . "<br>" . $dbConn->error;
+  }	
 }
 
 ?>
@@ -75,7 +56,7 @@ if ($dbConn->executeQuery($query) === true) {
       <?php include 'sidebar.php' ?>
       <div class="col py-1">
         <div class="container-fluid">
-          <form class="w-75" method="POST" action="">
+          <form class="w-75" method="POST" action="" enctype="multipart/form-data">
             <fieldset enabled>
               <legend>Add Products</legend>              
               <div class="mb-4 pt-5">
@@ -85,7 +66,7 @@ if ($dbConn->executeQuery($query) === true) {
                 <input type="text" name="serialNo" class="form-control" placeholder="Serial Number">
               </div>
               <div class="mb-4">
-              <input type="File" name="productImage" class="form-control" placeholder="Add Image" >
+              <input type="file" name="productImage" class="form-control" accept=".jpeg,.png,.gif,.jpg,.webp" placeholder="Add Image" >
               </div>
               <div class="mb-4">
                 <input type="text" name="price" class="form-control" placeholder="Item Price">
