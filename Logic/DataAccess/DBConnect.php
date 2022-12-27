@@ -38,5 +38,6 @@ class DBConnect{
 }
 
 $dbConn = new DBConnect();
-//echo $dbConn->getName();
+echo $dbConn->getName();
+echo " database connected...!";
 

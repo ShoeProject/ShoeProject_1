@@ -36,7 +36,7 @@
                 </li>
                 <li>
                     <a href="NewsView.php" class="nav-link px-0 align-middle">
-                    <i class="bi bi-chat-dots-fill"></i></i></i></i></i></i> <span class="ms-1 d-none d-sm-inline">Add News And Notify</span> 
+                    <i class="bi bi-chat-dots-fill"></i> <span class="ms-1 d-none d-sm-inline">Add News And Notify</span> 
                     </a>
                 </li>
                 <li>

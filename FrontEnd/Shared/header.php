@@ -10,20 +10,17 @@ $user_logged = false;
 
 <head>
 	<title>Online Shoes Shop</title>
-    <link href="../../vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="../../vendor/twbs/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="<?php echo $server; ?>vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="<?php echo $server; ?>vendor/twbs/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
     <link rel="stylesheet" href="asset/css/style.css" />
-    <script src="../../vendor/twbs/bootstrap/dist/js/bootstrap.bundle.js"></script>
-    <script src="../../vendor/components/jquery.slim.min.js"></script>
+    <script src="<?php echo $server; ?>vendor/twbs/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="<?php echo $server; ?>vendor/components/jquery.slim.min.js"></script>
     <script src="asset/js/main.js"></script>
-    <script src="../../vendor/twbs/bootstrap/js/src/popover.js"></script>
-
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="<?php echo $server; ?>vendor/twbs/bootstrap/js/src/popover.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">	
 	<link rel="stylesheet" href="<?php echo $server; ?>FrontEnd/asset/css/style.css">
 
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+	
 	<style type="text/css">
 		body {
 			font: 14px sans-serif;
@@ -42,7 +39,7 @@ $user_logged = false;
 			<div class="navbar-collapse collapse justify-content-between">
 				<ul class="navbar-nav" id="navbar">
 					<li class="nav-item active">
-						<a class="nav-link text-dark" href="<?php echo $server; ?>index.php"><i class="fa fa-shopping-bag text-dark"></i> GeneShoes</a>
+						<a class="nav-link text-dark" href="<?php echo $server; ?>index.php"><i class="fa fa-shopping-bag text-dark"></i> Genius Shoes</a>
 					</li>
 
 					<?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
@@ -63,7 +60,7 @@ $user_logged = false;
 				</ul>
 				<ul class="navbar-nav">
 					<li class="nav-item cart mr-4">
-						<a class="nav-link btn bg-warning" href="<?php echo $server; ?>templates/cart.php">
+						<a class="nav-link btn bg-warning" href="<?php echo $server; ?>FrontEnd/Shared/cart.php">
 							<span class="text-white">0 </span>
 							<i class="fa fa-shopping-cart text-white" style="font-size: 18px;"></i>
 						</a>
@@ -72,7 +69,7 @@ $user_logged = false;
 					<?php
 					if ($user_logged) { ?>
 						<li class="nav-item mr-sm-2">
-							<a class="nav-link btn btn-dark text-white" href="<?php echo $server; ?>components/user/logout.php"><span><i class="fa fa-sign-out text-white"></i></span>Sign Out</a>
+							<a class="nav-link btn btn-dark text-white" href="<?php echo $server; ?>logout.php"><span><i class="fa fa-sign-out text-white"></i></span>Sign Out</a>
 						</li>
 					<?php } else { ?>
 						<li class="nav-item mr-sm-2">
