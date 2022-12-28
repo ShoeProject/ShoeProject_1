@@ -28,9 +28,9 @@
 	</style>
 
 <body>
-    <div class="sidenavbar" text-decoration-none text-white>
-    <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-highlight">
-        <div class="d-flex flex-column align-items-center align-items-sm-start px-1 pt-2 text-dark min-vh-100">
+    <div class="sidenavbar" text-white>
+    <div class="col-auto col-3 col-2 px-2 px-0 bg-highlight">
+        <div class="d-flex flex-column align-items-center align-items-sm-start px-1 pt-2 min-vh-100">
             <!-- <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                         <span class="fs-5 d-none d-sm-inline">Menu</span>
                     </a> -->
