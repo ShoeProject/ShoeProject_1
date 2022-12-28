@@ -29,7 +29,7 @@ $res = $dbConn->executeQuery($ReadSql);
 		<div><?php include '../shared/header.php'; ?></div>
 		<div class="row flex-nowrap">
 			<?php include 'sidebar.php' ?>
-			<div class="container-fluid my-4">
+			<div class="container-fluid my-4 w-75">
 				<div class="row my-2">
 					<h2> Shop - News & Notification Center</h2>
 					<a href="newsAndNotify.php"><button type="button" class="btn btn-primary ml-4 pl-2">Add New</button></a>

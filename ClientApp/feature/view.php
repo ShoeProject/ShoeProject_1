@@ -29,7 +29,7 @@ $res = $dbConn->executeQuery($ReadSql);
 		<div><?php include '../shared/header.php'; ?></div>
 		<div class="row flex-nowrap">
 			<?php include 'sidebar.php' ?>
-			<div class="container-fluid my-4">
+			<div class="container-fluid my-4 w-75">
 				<div class="row my-2">
 					<h2> Shop - Products</h2>
 					<a href="product.php"><button type="button" class="btn btn-primary ml-4 pl-2">Add New</button></a>
@@ -52,7 +52,7 @@ $res = $dbConn->executeQuery($ReadSql);
 								<tr>
 									<!-- <th scope="row"></th>  -->
 									<td><?php echo $r['name']; ?></td>
-									<td>$ <?php echo $r['item_price']; ?></td>
+									<td>Rs. <?php echo $r['item_price']; ?></td>
 									<td><?php echo $r['item_size']; ?></td>
 									<td><?php echo $r['item_color']; ?></td>
 									<td>
