@@ -22,9 +22,47 @@ $user_logged = false;
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
 
+	<link href="<?php echo $server; ?>vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <style type="text/css">
+        /* *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        } */
 
-	<style type="text/css">
-		body {
+        .login-frame{
+            background: rgb(219, 226, 226);
+			border-top-right-radius: 30px;
+			border-bottom-right-radius: 30px;
+        }
+
+        .footer-row{
+            border-radius: 30px;            
+        }
+
+        .login-image{
+            border-top-left-radius: 30px;
+            border-bottom-left-radius:30px ;
+        }
+
+        .btn-1{
+                border: none;
+                outline: none;
+                height: 50px;
+                width: 100%;
+                background-color: black;
+                color: white;
+                border-radius: 4px;
+                font-weight: bold;
+        }
+        
+        btn-1:hover{
+            background-color: black;
+            border: 1px solid;
+            color: black;
+        }
+
+		.footer-body{
 			font: 14px sans-serif;
 
 		}
@@ -45,7 +83,7 @@ $user_logged = false;
 				<div class="navbar-collapse collapse justify-content-between">
 					<ul class="navbar-nav" id="navbar">
 						<li class="nav-item active">
-							<div class="text-decoration-none text-white"> Genius Shoes</div>
+							<div class="text-white"> Genius Shoes</div>
 						</li>
 
 						<?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
@@ -74,11 +112,11 @@ $user_logged = false;
 
 						<?php
 						if ($user_logged) { ?>
-							<li class="nav-item mr-sm-2">
+							<li class="nav-item mr-sm-2 ml-2">
 								<a class="nav-link btn btn-dark text-white" href="<?php echo $server; ?>logout.php"><span><i class="fa fa-sign-out text-white"></i></span>Sign Out</a>
 							</li>
 						<?php } else { ?>
-							<li class="nav-item mr-sm-2">
+							<li class="nav-item mr-sm-2 ml-2">
 								<a class="nav-link btn btn-primary text-white" href="<?php echo $server; ?>login.php"><span><i class="fa fa-sign-in text-white"></i></span> Sign In</a>
 							</li>
 						<?php } ?>
