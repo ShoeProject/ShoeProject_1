@@ -54,7 +54,7 @@
                                     <!-- <div class="ml-2"> <small class="dis-price">$59</small> <span>40% OFF</span> </div> -->
                                 </div>
                             </div>
-                            <p class="about">Shop from a wide range of t-shirt from orianz. Pefect for your everyday use, you could pair it with a stylish pair of jeans or trousers complete the look.</p>
+                            <p class="about">FILA is a leading international sportswear brand that designs footwear and clothing. Browse through our collection of FILA shoes for men, women and kids and stay on top of the latest trends.</p>
                             <div class="sizes mt-5">
                                 <h6 class="text-uppercase">
                                     Size:<?php echo $r['item_size'] ?>
