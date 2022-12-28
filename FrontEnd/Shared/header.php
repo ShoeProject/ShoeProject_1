@@ -45,7 +45,7 @@ $user_logged = false;
 				<div class="navbar-collapse collapse justify-content-between">
 					<ul class="navbar-nav" id="navbar">
 						<li class="nav-item active">
-							<a class="nav-link text-dark" href="<?php echo $server; ?>index.php"><i class="text-decoration-none text-white"></i> Genius Shoes</a>
+							<div><i class="text-decoration-none text-white"></i> Genius Shoes</div>
 						</li>
 
 						<?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
