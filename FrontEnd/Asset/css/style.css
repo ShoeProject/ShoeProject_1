@@ -69,3 +69,7 @@ header {
 .btn-checkout span, .btn-checkout .fa-shopping-cart{
 	color: white
 }
+
+.btn-2{
+	border-radius: 10px;
+}

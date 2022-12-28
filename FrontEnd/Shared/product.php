@@ -11,7 +11,7 @@
 					<div style="font-weight: 600;">$<span class="price"><?php echo $r['item_price']; ?></span></div>
 
 					<!-- Button add to cart -->
-					<button data-pid="<?php echo $r['id']; ?>" type="button" class="buy-button">
+					<button data-pid="<?php echo $r['id']; ?>" type="button" class="btn-2 buy-button">
 						<span class="text-white">
 							<i class="fa fa-shopping-cart text-white"></i>
 							Add to cart
