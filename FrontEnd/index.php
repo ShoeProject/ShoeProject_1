@@ -10,7 +10,7 @@ include $db_path.'DBConnect.php';
 session_start();
 ?>
 <?php require('Shared/header.php') ?>
-<div class="d-flex mt-4 mx-4">
+<div class="d-flex mt-4 mx-4 p-4">
     <h3>Welcome to Genius Shoes Store,
         <b><?php // check user login and output username
             
