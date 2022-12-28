@@ -56,4 +56,4 @@ session_start();
     ?>
 </div>
 
-<!-- <?php require('templates/footer.php') ?> -->
+<?php require('Shared/footer.php') ?>
