@@ -22,8 +22,8 @@
         <img class="img-fluid h-100" src="<?php echo $server; ?>clientapp/asset/images/products/<?php echo $r['image_name']; ?> ?>" alt="Card Image Caption">
     </div>
     <div class="col-lg-5">
-        <div><?php echo $r['name'] ?></div>
-        <div><?php echo $r['item_price'] ?></div>
+        <div class="font-weight-bold py-3"><?php echo $r['name'] ?></div>
+        <div ><?php echo $r['item_price'] ?></div>
         <div><?php echo $r['item_color'] ?></div>
         <div><?php echo $r['item_size'] ?></div>
     </div>
