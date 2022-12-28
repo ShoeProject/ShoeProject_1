@@ -10,13 +10,12 @@ $user_logged = false;
 
 <head>
 	<title>Online Shoes Shop</title>
+	<script src="<?php echo $server; ?>vendor/twbs/bootstrap/js/src/popover.js"></script>
 	<link href="<?php echo $server; ?>vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 	<link href="<?php echo $server; ?>vendor/twbs/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
 	<link rel="stylesheet" href="asset/css/style.css" />
 	<script src="<?php echo $server; ?>vendor/twbs/bootstrap/dist/js/bootstrap.bundle.js"></script>
-	<script src="<?php echo $server; ?>vendor/components/jquery.slim.min.js"></script>
-	<script src="asset/js/main.js"></script>
-	<script src="<?php echo $server; ?>vendor/twbs/bootstrap/js/src/popover.js"></script>
+	<!-- <script src="/asset/js/main.js"></script>	 -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="<?php echo $server; ?>FrontEnd/asset/css/style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
