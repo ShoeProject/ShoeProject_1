@@ -93,9 +93,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 }
 ?> 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     
     <title>Login Page</title>
     <link href="<?php echo $server; ?>vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
