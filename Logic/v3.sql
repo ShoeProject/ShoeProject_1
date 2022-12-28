@@ -34,3 +34,5 @@ REFERENCES customer(id);
 alter table employee add column type_id varchar(40);
 alter table employee add constraint employee_fk_1 FOREIGN KEY(type_id)
 REFERENCES employee_type(id);
+
+ALTER table news_and_notification ADD COLUMN image_name varchar(255);
