@@ -9,7 +9,7 @@ include $db_path.'DBConnect.php';
 if (isset($_POST['prodbtn'])) {
   $name = $_POST['name'];
   $price = $_POST['price'];
-  $serialNo = $_POST['serialNo'];
+  $code = $_POST['code'];
   $itemSize = $_POST['itemSize'];
   $itemColor = $_POST['itemColor'];
   $categoryId = $_POST['categoryId'];
@@ -27,8 +27,8 @@ if (isset($_POST['prodbtn'])) {
       $fdir= $dir.$image_name;
       move_uploaded_file($temp_name, $fdir);
   }  
-  $query = "INSERT INTO product (name, item_price,serial_no,item_color,item_size,category_id,sub_category_id,image_name) VALUES
-    ('$name',$price,'$serialNo','$itemColor',$itemSize,null,null,'$image_name')";
+  $query = "INSERT INTO product (name, item_price,code,item_color,item_size,category_id,sub_category_id,image_name) VALUES
+    ('$name',$price,'$code','$itemColor',$itemSize,null,null,'$image_name')";
 
   if ($dbConn->executeQuery($query) === true) {
     echo "<script>alert('Database execute succeed..!');</script>";
@@ -60,10 +60,10 @@ if (isset($_POST['prodbtn'])) {
             <fieldset enabled>
               <legend>Add Products</legend>              
               <div class="mb-4 pt-5">
-                <input type="text" name="name" class="form-control" placeholder="Product Name">
+                <input type="text" name="name" class="form-control" placeholder="Brand Name">
               </div>
               <div class="mb-4">
-                <input type="text" name="serialNo" class="form-control" placeholder="Serial Number">
+                <input type="text" name="code" class="form-control" placeholder="Product Code">
               </div>
               <div class="mb-4">
               <input type="file" name="productImage" class="form-control" accept=".jpeg,.png,.gif,.jpg,.webp" placeholder="Add Image" >
