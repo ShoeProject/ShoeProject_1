@@ -103,12 +103,14 @@ $user_logged = false;
 						</div>
 					</ul>
 					<ul class="navbar-nav">
-						<li class="nav-item cart mr-4">
+						<li class="nav-item cart">
 							<a class="nav-link btn bg-warning" href="<?php echo $server; ?>FrontEnd/Shared/cart.php">
 								<span class="text-white">0 </span>
 								<i class="fa fa-shopping-cart text-white" style="font-size: 18px;"></i>
 							</a>
 						</li>
+						<li>&nbsp;</li>
+						
 
 						<?php
 						if ($user_logged) { ?>

@@ -34,7 +34,7 @@ if(isset($_POST) & !empty($_POST)){
     // }
 
     // Execute query
-	$editquery = "UPDATE product SET name='$name',description ='$description' WHERE id='$id'";
+	$editquery = "UPDATE product_categories SET name='$name',description ='$description' WHERE id='$id'";
 	
 	$res = $dbConn->executeQuery($editquery);
     echo "<script>alert('Database execute succeed..!');</script>";

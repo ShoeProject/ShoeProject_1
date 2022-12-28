@@ -67,7 +67,7 @@
         <hr>
         <div class="row footer-row">
             <div class="col-md-12 text-center pt-2">
-                <p class="text-white">&copy; 2022 Copyright <a href="#" class="text-decoration-none text-white">Genius Shoes Group or its affiliates. All Rights Reserved</a></p>
+                <p class="text-white">&copy; 2022 Copyright &nbsp; <a href="#" class="text-decoration-none text-white">Genius Shoes Group or its affiliates. All Rights Reserved</a></p>
             </div>
         </div>
     </div>
