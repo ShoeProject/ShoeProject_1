@@ -1,6 +1,6 @@
 <div class="col-md-4 col-sm-6 my-2">
 	<div class="card m-auto product" style="width: 20rem;">
-		<!-- <a class="text-decoration-none" href="<?php echo $server; ?>frontend/component/ViewProduct.php?id=<?php echo $r['id'] ?>"> -->
+		<a class="text-decoration-none" href="<?php echo $server; ?>frontend/component/ViewProduct.php?id=<?php echo $r['id'] ?>">
 			<img class="card-img-top" src="<?php echo $server; ?>clientapp/asset/images/products/<?php echo $r['image_name']; ?> ?>" alt="Card Image Caption">
 
 			<div class="card-body">
@@ -19,6 +19,6 @@
 					</button>
 				</div>
 			</div>
-		<!-- </a> -->
+		</a>
 	</div>
 </div>
