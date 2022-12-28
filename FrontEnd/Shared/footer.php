@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html>
+<!-- <!DOCTYPE html>
+<html> -->
 
 <!-- <head>
     <meta charset='utf-8'>
@@ -11,7 +11,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
 </head> -->
 
-<body>
+<!-- <body> -->
+    <div class="footer-body">
     <div class="container-fluid   text-white p-3 mt-5" style="font-family: 'Poppins', sans-serif; background: #0f0c29;
    background: linear-gradient(to right, #24243e, #302b63, #0f0c29);">
 
@@ -23,7 +24,7 @@
             <hr>
         </div>
 
-        <div class="row justify-content-around text-center text-md-start">
+        <div class="row justify-content-around text-center text-md-start footer-row">
 
             <div class="col-md-2 text-center">
                 <h1 class="fw-bold mt-3 text-white">Genius</h1>
@@ -64,12 +65,13 @@
             </div>
         </div>
         <hr>
-        <div class="row">
+        <div class="row footer-row">
             <div class="col-md-12 text-center pt-2">
                 <p class="text-white">&copy; 2022 Copyright <a href="#" class="text-decoration-none text-white">Genius Shoes Group or its affiliates. All Rights Reserved</a></p>
             </div>
         </div>
     </div>
-</body>
+    </div>
+<!-- </body> -->
 
-</html>
+<!-- </html> -->

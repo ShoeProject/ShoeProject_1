@@ -92,12 +92,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
 }
+
+include $path."/frontend/shared/header.php";
 ?> 
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!-- <!DOCTYPE html>
+<html lang="en"> -->
+<!-- <head>
     
-    <title>Login Page</title>
+    
     <link href="<?php echo $server; ?>vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <style>
         *{
@@ -139,15 +141,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     </style>
     
-</head>
-<body>
-<section class="Form my-4 mx-5">
+</head> -->
+<!-- <body> -->
+
+    <!-- <div class="login-frame"> -->
+<section class="Form pt-5 ">
     <div class="container">
         <div class="row no-gutters">            
-            <div class="col-lg-5">
-                <img src="<?php echo $server; ?>ClientApp/Asset/images/shoe.png" class="img-fluid h-100" alt=""/>
+            <div class="col-md-5">
+                <img class="login-image" src="<?php echo $server; ?>ClientApp/Asset/images/shoe.png" class="img-fluid h-100" alt=""/>
             </div>
-            <div class="col-lg-5">
+            <div class="col-md-5 login-frame">
                 <h1 class="font-weight-bold py-3">Login</h1>
                 <h4>Sign into your account</h4>
                 <form action="submit" method="POST">
@@ -172,8 +176,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </div>
         </div>
     </div>
-</section>    
-</body>
-</html>
+</section> 
+<!-- </div>    -->
+<?php include $path."/frontend/shared/footer.php"?>
+<!-- </body>
+</html> -->
 
 
