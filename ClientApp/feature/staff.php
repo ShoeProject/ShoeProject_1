@@ -1,10 +1,29 @@
 <?php
-// namespace feature\staff;
-// //use Logic;
-// use Logic\DataAccess\DBConnect;
-//include '../ShoeProject_1/Logic/DataAccess/DBConnect.php'
 
-include('../../Logic/DataAccess/DBConnect.php');
+$path = $_SERVER['DOCUMENT_ROOT'];
+$path .= "/ShoeProject_1/Logic/DataAccess/";
+
+include $path.'DBConnect.php';
+
+
+if (isset($_POST['btncreatemember'])) {
+  $name = $_POST['name'];
+  $address = $_POST['address'];
+  $contact = $_POST['contact'];
+  $age = $_POST['age'];
+ 
+  
+ 
+  $query = "INSERT INTO employee (name, address,phone_no,age) VALUES ('$name','$address','$contact','$age')";
+  
+  if ($dbConn->executeQuery($query) === true) {
+    echo "<script>alert('Database execute succeed..!');</script>";
+    header('location: staffView.php');
+  } else {
+    echo "Error: " . $query . "<br>" . $dbConn->error;
+  }	
+}
+?>
 
 
 ?>
@@ -37,7 +56,7 @@ include('../../Logic/DataAccess/DBConnect.php');
                 <input type="text" name="address" class="form-control" placeholder="Address">
               </div>
               <div class="mb-4">
-                <input type="text" name="phone_no" class="form-control" placeholder="phonenumber">
+                <input type="text" name="contact" class="form-control" placeholder="phonenumber">
               </div>
               <div class="mb-4">
                 <input type="text" name="age" class="form-control" placeholder="age">
@@ -50,7 +69,7 @@ include('../../Logic/DataAccess/DBConnect.php');
                 </select>
               </div>
               <div class="sizebtn">
-                <button type="submit" name="createmember" class="btn btn-warning">Create Member</button>
+                <button type="submit" name="btncreatemember" class="btn btn-warning">Create Member</button>
                 <button type="submit" name="updbtn" class="btn btn-warning">Update Member</button>
                 <button type="submit" class="btn btn-warning ">Reset</button>
               </div>

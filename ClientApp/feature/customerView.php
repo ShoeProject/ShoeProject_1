@@ -28,31 +28,31 @@
       <th scope="col">#</th>
       <th scope="col">Customer Name</th>
       <th scope="col">Address</th>
-      <th scope="col">email</th>
+      <th scope="col">Email</th>
       <th scope="col">Contact Number</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
+      <td>Mark Hale</td>
+      <td>kandy</td>
+      <td>mark@gmail.com</td>
+      <td>077-4562312</td>
     </tr>
     <tr>
       <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>fat</td>
-      <td>mdo</td>
+      <td>Derick fernando</td>
+      <td>kandy</td>
+      <td>Derick@gmail.com</td>
+      <td>076-4562342</td>
     </tr>
     <tr>
       <th scope="row">3</th>
-      <td>Larry</td>
-      <td>@twitter</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
+      <td>Peter parker</td>
+      <td>Galle</td>
+      <td>Peter@gmail.com</td>
+      <td>075-5562312</td>
     </tr>
   </tbody>
 </table>

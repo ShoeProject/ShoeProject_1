@@ -101,7 +101,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
  
 <?php require('header.php') ?>
 
-    <div class="wrapper mx-auto">
+
+    <div class="wrapper mx-auto p-5">
         <h2>Sign Up</h2>
         <p>Please fill this form to create an account.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
@@ -124,11 +125,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <input type="password" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>" required>
                 <span class="help-block"><?php echo $confirm_password_err; ?></span>
             </div>
+            <div>
+                &nbsp;
+            </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Submit">
                 <input type="reset" class="btn btn-default" value="Reset">
             </div>
             <p>Already have an account? <a href="login.php">Login here</a>.</p>
         </form>
-    </div>    
+    </div>
+    
+    <?php require('footer.php') ?>
+    
+    
 

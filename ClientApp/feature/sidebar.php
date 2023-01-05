@@ -36,38 +36,38 @@
                     </a> -->
             <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                 <li class="nav-item">
-                    <a href="home.php" class="nav-link align-middle px-0 text-decoration-none text-white" >
+                    <a href="home.php" class="nav-link align-middle px-0 text-decoration-none text-white p-4" >
                         <i class="fs-4 bi-house text-white"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
                     </a>
                 </li>                
                 <li>
-                    <a href="staff.php" class="nav-link px-0 align-middle text-decoration-none text-white">
+                    <a href="staffView.php" class="nav-link px-0 align-middle text-decoration-none text-white p-4">
                         <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Staff</span>
                     </a>
                 </li>                
                 <li>
-                    <a href="view.php" class="nav-link px-0 align-middle text-decoration-none text-white">
+                    <a href="view.php" class="nav-link px-0 align-middle text-decoration-none text-white p-4">
                         <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Products</span> 
                     </a>
 
                 </li>
                 <li>
-                    <a href="NewsView.php" class="nav-link px-0 align-middle text-decoration-none text-white">
+                    <a href="NewsView.php" class="nav-link px-0 align-middle text-decoration-none text-white p-4">
                     <i class="bi bi-chat-dots-fill"></i> <span class="ms-1 d-none d-sm-inline">Add News And Notify</span> 
                     </a>
                 </li>
                 <li>
-                    <a href="CategoryView.php" class="nav-link px-0 align-middle text-decoration-none text-white">
+                    <a href="CategoryView.php" class="nav-link px-0 align-middle text-decoration-none text-white p-4">
                     <i class="bi bi-cart4"></i></i> <span class="ms-1 d-none d-sm-inline">Add Category</span> 
                     </a>
                 </li>
                 <li>
-                    <a href="SubCategoryView.php" class="nav-link px-0 align-middle text-decoration-none text-white">
+                    <a href="SubCategoryView.php" class="nav-link px-0 align-middle text-decoration-none text-white p-4">
                     <i class="bi bi-cart4"></i> <span class="ms-1 d-none d-sm-inline">Add Sub Category</span> 
                     </a>
                 </li>
                 <li>
-                    <a href="customerView.php" class="nav-link px-0 align-middle text-decoration-none text-white">
+                    <a href="customerView.php" class="nav-link px-0 align-middle text-decoration-none text-white p-4">
                         <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Manage Customers</span> 
                     </a>
                 </li>
