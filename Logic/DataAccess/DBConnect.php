@@ -6,7 +6,7 @@ class DBConnect{
 	private $username = "root";
 	private $password = "";
 	private $database = "shoe_db";
-	private $conn = null;
+	private $conn;
 	public $name = "shoeProject";
 	private static $_instance;
 	
@@ -30,6 +30,10 @@ class DBConnect{
 
 	function closeConn(){
 		$this->conn->close();
+	}
+
+	function prepare($sql){
+		return $this->conn->prepare($sql);
 	}
 
 	function getName(){

@@ -41,10 +41,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate credentials
     if(empty($email_err) && empty($password_err)){
         // Prepare a select statement
-        $sql = "SELECT id, email, password, role FROM customer WHERE email = '$email'";
+        $sql = "SELECT id FROM users WHERE email = ?";
         
-        if($stmt = $dbConn->executeQuery($sql)){
+        if($stmt = $dbConn->prepare($sql)){
             // Bind variables to the prepared statement as parameters
+
+            //if($stmt){echo "not null";}
             $stmt->bind_param("s", $param_email);
             
             // Set parameters
@@ -54,11 +56,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             if($stmt->execute()){
                 // Store result
                 $stmt->store_result();
-                
+                //echo "not null";
                 // Check if email exists, if yes then verify password
                 if($stmt->num_rows == 1){                    
                     // Bind result variables
-                    $stmt->bind_result($id, $email, $hashed_password, $role);
+                    echo "not null";
+                    $stmt->bind_result($id, $email, $hashed_password);
                     if($stmt->fetch()){
                         if(password_verify($password, $hashed_password)){
                             // Password is correct, so start a new session
@@ -68,7 +71,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["email"] = $email;
-                            $_SESSION["role"] = $role;                       
+                            //$_SESSION["role"] = $role;                       
                             
                             // Redirect user to welcome page
                             $url = 'http://' . $_SERVER['HTTP_HOST']; // Get server
@@ -84,7 +87,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $email_err = "No account found with that email.";
                 }
             } else{
-                echo "Oops! Something went wrong. Please try again later.";
+                echo '<script>alert("Oops! Something went wrong. Please try again later.")</script>';
             }
 
             // Close statement
@@ -95,56 +98,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 include $path."/frontend/shared/header.php";
 ?> 
-<!-- <!DOCTYPE html>
-<html lang="en"> -->
-<!-- <head>
-    
-    
-    <link href="<?php echo $server; ?>vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <style>
-        *{
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
 
-        body{
-            background: rgb(219, 226, 226);
-        }
-
-        .row{
-            background:white;
-            border-radius: 30px;
-            
-        }
-
-        img{
-            border-top-left-radius: 30px;
-            border-bottom-left-radius:30px ;
-        }
-
-        .btn-1{
-                border: none;
-                outline: none;
-                height: 50px;
-                width: 100%;
-                background-color: black;
-                color: white;
-                border-radius: 4px;
-                font-weight: bold;
-        }
-        
-        btn-1:hover{
-            background-color: black;
-            border: 1px solid;
-            color: black;
-        }
-    </style>
-    
-</head> -->
-<!-- <body> -->
-
-    <!-- <div class="login-frame"> -->
 <section class="Form pt-5 ">
     <div class="container">
         <div class="row no-gutters">            
@@ -154,15 +108,15 @@ include $path."/frontend/shared/header.php";
             <div class="col-md-5 login-frame">
                 <h1 class="font-weight-bold py-3">Login</h1>
                 <h4>Sign into your account</h4>
-                <form action="submit" method="POST">
+                <form  method="POST">
                     <div class="form-row">
                         <div class="col-lg-7">
-                            <input type="email" placeholder="Email Address" class="form-control my-3 p-4" />
+                            <input name="email" type="email" placeholder="Email Address" class="form-control my-3 p-4" />
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-lg-7">
-                            <input type="password" placeholder="Password" class="form-control my-3 p-4" />
+                            <input name="password" type="password" placeholder="Password" class="form-control my-3 p-4" />
                         </div>
                     </div>
                     <div class="form-row">
