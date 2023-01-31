@@ -41,6 +41,7 @@ $res = $dbConn->executeQuery($ReadSql);
 							<th>Address</th>
 							<th>Phone Number</th>
                             <th> Age</th>
+                            <th> Action</th>
 						</tr>
 					</thead>
 					<tbody>
