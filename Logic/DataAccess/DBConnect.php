@@ -39,6 +39,10 @@ class DBConnect{
 	function getName(){
 		return $this->name;
 	}
+
+	function getConnection(){
+		return $this->conn;
+	}
 }
 
 $dbConn = new DBConnect();

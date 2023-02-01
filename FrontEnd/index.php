@@ -17,7 +17,7 @@ session_start();
             if ($user_logged) {
                 $user_id = ($_SESSION['id']);
                 $select_sql = "SELECT name FROM `customer` WHERE id='$user_id'";
-                $prodResult = $dbConn->executeQuery($select_sql);
+                $result = $dbConn->executeQuery($select_sql);
                 if ($result->num_rows > 0) {
                     $row = mysqli_fetch_assoc($result);
                     echo $row["name"];

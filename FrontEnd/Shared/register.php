@@ -1,5 +1,6 @@
 <?php
 // Include config file
+$server = 'http://' . $_SERVER['SERVER_NAME'] . '/shoeproject_1'; 
 $path = $_SERVER['DOCUMENT_ROOT'];
 $path .= "/ShoeProject_1";
 $db_path = $path . "/Logic/DataAccess/";
@@ -9,6 +10,8 @@ include $db_path.'DBConnect.php';
 // Define variables and initialize with empty values
 $email = $password = $confirm_password = "";
 $email_err = $password_err = $confirm_password_err = "";
+
+$connection = $dbConn->getConnection();
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -34,11 +37,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 
                 if(mysqli_stmt_num_rows($stmt) == 1){
                     $email_err = "This email is already registered.";
+                    echo '<script>alert("This email is already registerd.")</script>';
                 } else{
                     $email = trim($_POST["email"]);
                 }
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
+                echo '<script>alert("Oops! Something went wrong. Please try again later.")</script>';
             }
 
             // Close statement
@@ -69,21 +74,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($email_err) && empty($password_err) && empty($confirm_password_err)){
         
         // Prepare an insert statement
-        $sql = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO users (email, password) VALUES (?, ?)";
         $stmt = mysqli_prepare($connection, $sql);
         if($stmt){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sss", $param_name, $param_email, $param_password);
+            mysqli_stmt_bind_param($stmt, "ss",$param_email, $password);
             
             // Set parameters
-            $param_name = $name;
             $param_email = $email;
-            $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
+            //$param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
             
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Redirect to login page
-                header("location: login.php");
+                header("location: $server/login.php");
             } else{
                 echo "Something went wrong. Please try again later.\n";
                 print_r($stmt->error_list);
@@ -105,7 +109,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <div class="wrapper mx-auto p-5">
         <h2>Sign Up</h2>
         <p>Please fill this form to create an account.</p>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <form method="post">
             <div class="form-group">
                 <label>Name</label>
                 <input type="text" name="name" class="form-control" value="">
