@@ -6,6 +6,11 @@ $db_path = $path . "/Logic/DataAccess/";
 
 include $db_path.'DBConnect.php';
 
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
+    header("location: ".$path."/login.php");
+    exit;
+}
+$user_logged = true;
 // Initialize the session
 session_start();
 ?>

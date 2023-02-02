@@ -2,16 +2,28 @@
 // Include config file
 $path = $_SERVER['DOCUMENT_ROOT'];
 $path .= "/ShoeProject_1/";
-//require_once($path . 'connect.php');
+
+$db_path = $path . "/Logic/DataAccess/";
+include $db_path.'DBConnect.php';
+
+
+
  
 // Initialize the session
 session_start();
+
+$id = $_SESSION['id'];
 
 if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) {
 	$url = 'http://' . $_SERVER['HTTP_HOST']; // Get server
     $url .= "/ShoeProject_1/login.php";
 	header('Location: ' . $url, TRUE, 302);
 }
+
+$sql = "select * from cart where customer_id ='$id'";
+$sql = "SELECT cart.*, product.* FROM cart INNER JOIN product ON cart.product_id = product.id
+WHERE cart.product_id = [specific_product_id];";
+$result = $dbConn->executeQuery($sql);
 
 ?>
 <?php require($path . 'FrontEnd/Shared/header.php') ?>
@@ -29,7 +41,13 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) {
 					</tr> 
 				</thead> 
 				<tbody> 
-					<!-- fill using script -->
+					<?php 
+					if($result->num_rows > 0){
+						while($row = $result->fetch_assoc()) {
+							echo "<tr>"."<td>".$row['product_id']."</td>"."</tr>";
+						}
+					}
+					?>
 				</tbody>
 			</table>
         </div> 
