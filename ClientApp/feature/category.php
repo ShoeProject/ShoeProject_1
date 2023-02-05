@@ -52,8 +52,8 @@ if (isset($_POST['btncategory'])) {
 
               </div>
               <div>
-                <button type="submit" name="btncategory" class="btn btn-warning ">ADD</button>
-                <button type="submit" class="btn btn-warning ms-3">Reset</button>
+                <button type="submit" name="btncategory" class="btn btn-warning ">Add Category</button>
+                <button type="reset" class="btn btn-warning ms-3">Reset</button>
               </div>
             </fieldset>
           </form>
