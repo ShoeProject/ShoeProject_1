@@ -4,7 +4,11 @@ $path .= "/ShoeProject_1";
 $db_path = $path."/Logic/DataAccess/";
 
 include $db_path.'DBConnect.php';
+$ReadSql = "SELECT * FROM product_categories";
+$res = $dbConn->executeQuery($ReadSql);
 
+$ReadSql2 = "SELECT * FROM product_sub_categories";
+$res2 = $dbConn->executeQuery($ReadSql2);
 
 if (isset($_POST['prodbtn'])) {
   $name = $_POST['name'];
@@ -13,6 +17,11 @@ if (isset($_POST['prodbtn'])) {
   $itemSize = $_POST['itemSize'];
   $itemColor = $_POST['itemColor'];
   $categoryId = $_POST['categoryId'];
+  /*$sql = "SELECT id FROM product_categories where name='$categoryId'";
+  $result = $dbConn->executeQuery($sql);
+  if ($row = $result->fetch_row()) {
+    $catName = $row[0];
+  }*/
   $subCatergoryId = $_POST['subCatergoryId'];
   $image_name = $_FILES['productImage']['name'];
   echo "<script>console.log(".$image_name.");</script>";
@@ -26,9 +35,10 @@ if (isset($_POST['prodbtn'])) {
       }
       $fdir= $dir.$image_name;
       move_uploaded_file($temp_name, $fdir);
-  }  
+  }
+  
   $query = "INSERT INTO product (name, item_price,code,item_color,item_size,category_id,sub_category_id,image_name) VALUES
-    ('$name',$price,'$code','$itemColor',$itemSize,null,null,'$image_name')";
+    ('$name',$price,'$code','$itemColor',$itemSize,'$categoryId','$subCatergoryId','$image_name')";
 
   if ($dbConn->executeQuery($query) === true) {
     echo "<script>alert('Database execute succeed..!');</script>";
@@ -85,17 +95,26 @@ if (isset($_POST['prodbtn'])) {
               <div class="mb-4">
                 <label for="disabledSelect" class="form-label">Category Id</label>
                 <select name="categoryId" class="form-select">
-                  <option>Red</option>
-                  <option>Green</option>
-                  <option>Blue</option>
+                <?php
+						        if ($res->num_rows > 0) {
+							      while ($r = $res->fetch_assoc()) {
+						    ?>  
+                    <option value="<?php echo $r['id']; ?>"><?php echo $r['name']; ?></option>
+                  <?php }
+						      } ?>
+            
                 </select>
               </div>
               <div class="mb-4">
                 <label for="disabledSelect" class="form-label">Sub Category Id</label>
                 <select name="subCatergoryId" class="form-select">
-                  <option>Red</option>
-                  <option>Green</option>
-                  <option>Blue</option>
+                <?php
+						        if ($res2->num_rows > 0) {
+							      while ($r = $res2->fetch_assoc()) {
+						    ?>  
+                    <option value="<?php echo $r['id']; ?>" ><?php echo $r['name']; ?></option>
+                  <?php }
+						      } ?>
                 </select>
               </div>          
               <button type="submit" name="prodbtn" class="btn btn-warning">Submit</button>
