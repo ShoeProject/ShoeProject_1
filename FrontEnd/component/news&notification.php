@@ -2,17 +2,6 @@
 $SelSql = "SELECT * FROM news_and_notification";
 $res = $dbConn->executeQuery($SelSql);
 $num_of_rows = mysqli_num_rows($res);
-//if ($num_of_rows > 0) {
-//     // output data of each row
-//     while ($num_of_rows > 0) {
-//         $num_of_rows--;
-//         $r = mysqli_fetch_assoc($res);
-//         include('component/news&notification.php');
-//     }
-// } else {
-//     echo "<p>No News Available</p>";
-// }
-
 ?>
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
