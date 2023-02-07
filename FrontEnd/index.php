@@ -43,21 +43,9 @@ session_start();
     <?php if (isset($fmsg)) { ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
 </div>
 
-<div class="row notify-section">
+<div class="row notify-section image-fluid">
     <?php 
-    $SelSql = "SELECT * FROM news_and_notification";
-    $res = $dbConn->executeQuery($SelSql);
-    $num_of_rows = mysqli_num_rows($res);
-    if ($num_of_rows > 0) {
-        // output data of each row
-        while ($num_of_rows > 0) {
-            $num_of_rows--;
-            $r = mysqli_fetch_assoc($res);
-            include('component/news&notification.php');
-        }
-    } else {
-        echo "<p>No News Available</p>";
-    }
+    include('component/news&notification.php');
     ?>
 </div>
 
