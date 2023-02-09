@@ -43,6 +43,12 @@ session_start();
     <?php if (isset($fmsg)) { ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
 </div>
 
+<div class="row notify-section image-fluid">
+    <?php 
+    include('component/news&notification.php');
+    ?>
+</div>
+
 <div class="row main-section">
     <?php 
     $SelSql = "SELECT * FROM product";
