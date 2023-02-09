@@ -20,9 +20,9 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) {
 	header('Location: ' . $url, TRUE, 302);
 }
 
-$sql = "select * from cart where customer_id ='$id'";
-$sql = "SELECT cart.*, product.* FROM cart INNER JOIN product ON cart.product_id = product.id
-WHERE cart.product_id = [specific_product_id];";
+$sql = "select * from cart where customer_id ='$id' ";
+//$sql = "SELECT cart.*, product.* FROM cart INNER JOIN product ON cart.product_id = product.id
+//WHERE cart.product_id = [specific_product_id];";
 $result = $dbConn->executeQuery($sql);
 
 ?>

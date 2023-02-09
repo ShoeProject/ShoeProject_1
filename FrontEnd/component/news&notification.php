@@ -15,10 +15,10 @@ $num_of_rows = mysqli_num_rows($res);
       // output data of each row
       while ($num_of_rows > 0) {
         $num_of_rows--;
-        $r = mysqli_fetch_assoc($res);
+        $r = mysqli_fetch_assoc($res);           
         ?>
         <div class="carousel-item active">
-          <img src="<?php echo $server; ?>ClientApp\Asset\images\news\<?php echo $r['image_name']; ?>" class="d-block w-100" width="250">
+          <img src="<?php echo $server; ?>ClientApp\Asset\images\news\<?php echo $r['image_name']; ?>" class="d-block w-100" width="500px">
           <div class="carousel-caption d-none d-md-block">
             <h5><?php echo $r['newsHeading'] ?></h5>
             <p><?php echo $r['newsBody'] ?></p>

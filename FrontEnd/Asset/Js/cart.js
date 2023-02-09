@@ -1,12 +1,14 @@
+var cart;
 
-// CART section
-const cart = document.querySelector('.cart span');
-const products = document.querySelectorAll('.product');
-const cartProducts = document.querySelector('.cart-products .table tbody'); // get el to fill
+window.addEventListener("load", function() {
+    // your code here
+    document.getElementById("add-cart-1234").addEventListener("click", addProduct);
+    //const data = element.dataset.pid;
+    cart= document.querySelector('.cart span');
+    console.log(cart);
 
-const btnCheckout = document.querySelector('.btn-checkout'); // cart checkout
+});
 
-// add to cart
 function addProduct() {
 	const pid = this.dataset.pid;
 	const parent = this.parentNode;
@@ -39,57 +41,48 @@ function addProduct() {
 	}
 
 	localStorage.setItem('myCart', JSON.stringify(prod));
-	cart.textContent = ' ' + prod.length;
+	cart.textContent = ' ' + prod.length;    
+    saveToDb(item.p_id);
+
+	//console.log(localStorage.getItem('myCart')); //    
 }
 
-// get from cart and display on table
-function populate() { // get items on page load
-	let prod = JSON.parse(localStorage.getItem('myCart')) || 0;
-
-	if (prod) cart.textContent = prod.length + ' ';
-
-	if (!cartProducts || prod == 0) return;
-
-	let total = 0;
-	prod.forEach(function (el) {
-		let t = el.price.split('').filter(a => !isNaN(a)).join(''); //convert to number
-		total += (Number(t) * el.quantity);
-	});
-
-	prod.forEach(function (p) { // fill the cart products
-
-		const el = document.createElement('tr');
-		el.innerHTML = (` 
-			<th>${p.p_id}</th>
-			<td>${p.title}</td>
-			<td>${p.quantity}</td>
-			<td>${p.price}</td>
-		`);
-		cartProducts.appendChild(el);
-	});
-
-	const totalContainer = document.createElement('div');
-	totalContainer.style.fontSize = '1.2rem';
-	totalContainer.textContent = `Total : $${total}`;
-
-	const wrapper = document.querySelector('.wrapper');
-	wrapper.insertBefore(totalContainer, btnCheckout);
-
-};
-
-populate();
-
-products.forEach(function (element) {
-	btnAdd = element.querySelector('.buy-button');
-	btnAdd.addEventListener('click', addProduct)
-});
-
-function checkout(argument) {
-	localStorage.removeItem('myCart');
-
-	cartProducts.innerHTML = '';
-	cart.textContent = '0 ';
+function saveToDb(data){    
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://localhost/shoeproject_1/Logic/CartLogic/savecart.php?data="+data, true);
+        console.log("http://localhost/shoeproject_1/Logic/CartLogic/savecart.php?data="+data);
+        xhr.onreadystatechange = function() {
+        if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+            // Handle response from PHP function
+        }};
+        xhr.send();    
+        //window.location.href = "yourphpfile.php?action=callFunction";
 }
-if (btnCheckout) {
-	btnCheckout.addEventListener('click', checkout);
+
+function updateDb(data){
+    
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "http://localhost/Logic/CartLogic/savecart.php", true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    xhr.send(data);
+
+    xhr.onreadystatechange = function() {
+    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+        // Handle response from PHP function
+    }
+    };
+
 }
+
+// function checkout(argument) {
+// 	localStorage.removeItem('myCart');
+
+// 	cartProducts.innerHTML = '';
+// 	cart.textContent = '0 ';
+// }
+// if (btnCheckout) {
+// 	btnCheckout.addEventListener('click', checkout);
+// }
+
+  
