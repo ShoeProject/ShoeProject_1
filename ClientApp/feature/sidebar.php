@@ -77,6 +77,11 @@
                         <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Manage Customers</span> 
                     </a>
                 </li>
+                <li>
+                    <a href="inquiryView.php" class="nav-link px-0 align-middle text-decoration-none text-white p-4">
+                        <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Manage Inquiry</span> 
+                    </a>
+                </li>
 
             </ul>
             <hr>
