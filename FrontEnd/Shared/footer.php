@@ -48,12 +48,13 @@
             </div>
             <div class="col-md-2">
                 <ul class="list-unstyled">
-                    <li class="fw-bold my-2 text-white">Contact</li>
-                    <li> <a href="#" class="text-decoration-none text-white"><i class ="fas fa-home mr-3 text-white"></i>&nbsp;&nbsp;&nbsp;260,&nbsp;Colombo,&nbsp;Sri Lanka</a> </li>
-                    <li> <a href="#" class="text-decoration-none text-white"><i class ="fas fa-envelope mr-3 text-white"></i>&nbsp;&nbsp;GenShoes@gmail.com</a> </li>
-                    <li> <a href="#" class="text-decoration-none text-white"><i class ="fas fa-phone mr-3 text-white"></i>&nbsp;&nbsp;011 &nbsp;296 &nbsp;6520</a> </li>
+                    <li class="fw-bold my-2 text-white"><a href="<?php echo $server; ?>FrontEnd/component/inquiry.php" class="text-decoration-none text-white">Contact US</a></li>
+                    <li> <i class ="text-white">&nbsp;&nbsp;&nbsp;260,&nbsp;Colombo,&nbsp;Sri Lanka </i></li>
+                    <li> <i class ="text-white">&nbsp;&nbsp;GenShoes@gmail.com </i></li>
+                    <li> <i class ="text-white">&nbsp;&nbsp;011 &nbsp;296 &nbsp;6520 </i></li>
                 </ul>
             </div>
+           
             <div class="col-md-2">
                 <li class="fw-bold my-2 list-unstyled text-white">Stay Connected</li>
                 <ul class="list-unstyled d-flex justify-content-center justify-content-md-start">

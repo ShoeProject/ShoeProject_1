@@ -1,3 +1,13 @@
+<?php
+$path = $_SERVER['DOCUMENT_ROOT'];
+$path .= "/ShoeProject_1";
+$db_path = $path."/Logic/DataAccess/";
+
+include $db_path.'DBConnect.php';
+$ReadSql = "SELECT * FROM customer";
+$res = $dbConn->executeQuery($ReadSql);
+
+?>
 <html>
 
 <head>
@@ -33,33 +43,29 @@
     </tr>
   </thead>
   <tbody>
+  <?php  $x=0; ?>
+  <?php
+						        if ($res->num_rows > 0) {
+							      while ($r = $res->fetch_assoc()) {
+						    ?> 
     <tr>
-      <th scope="row">1</th>
-      <td>Mark Hale</td>
-      <td>kandy</td>
-      <td>mark@gmail.com</td>
-      <td>077-4562312</td>
+    
+    
+          <th scope="row"><?php echo $x=$x+1; ?></th>
+          <td><?php echo $r['name']; ?></td>
+          <td><?php echo $r['address']; ?></td>
+          <td>abc@gmail.com</td>
+          <td><?php echo $r['phone_no']; ?></td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Derick fernando</td>
-      <td>kandy</td>
-      <td>Derick@gmail.com</td>
-      <td>076-4562342</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Peter parker</td>
-      <td>Galle</td>
-      <td>Peter@gmail.com</td>
-      <td>075-5562312</td>
-    </tr>
+    <?php }
+						      } ?>
+    
   </tbody>
 </table>
-                     <div>
+                     <!--<div>
                        <button type="submit" class="btn btn-warning ">ADD</button>
                        <button type="submit" class="btn btn-warning ms-3">Reset</button>
-                     </div>
+                     </div>-->
                    </fieldset>
                  </form>
                     
