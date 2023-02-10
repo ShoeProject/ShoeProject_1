@@ -110,12 +110,19 @@ if (isset($_POST['btnsubmit'])){
             $_SESSION["id"] = $user['id'];
             $_SESSION["customer_id"] = $user['customer_id'];
             $_SESSION["email"] = $param_email;
-            $_SESSION["role"] = "Customer";                       
+            $_SESSION["role"] = "Customer";
+                                 
             
             // Redirect user to welcome page
             $url = 'http://' . $_SERVER['HTTP_HOST']; // Get server
-            $url .= "/ShoeProject_1/FrontEnd/";
-            header('Location: ' . $url, TRUE, 302);
+            if(!empty($user['customer_id'])){
+                $url .= "/ShoeProject_1/FrontEnd/";
+                header('Location: ' . $url, TRUE, 302);
+            }else{
+                $url .= "/ShoeProject_1/ClientApp/feature/";
+                header('Location: ' . $url, TRUE, 302);
+            }
+            
         } else {
             //$password_err = "The password you entered was not valid.";
             echo '<script>alert("Password is invalid...!")</script>';

@@ -19,7 +19,7 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">Profile</a></li>
-                                <li><a class="dropdown-item" href="/shoeproject_1/ClientApp/shared/loginStaff.php">Logout</a></li>
+                                <li><a class="dropdown-item" href="/shoeproject_1/logout.php">Logout</a></li>
                             </ul>
                         </li>
                     </ul>

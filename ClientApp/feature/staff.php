@@ -10,15 +10,26 @@ if (isset($_POST['btncreatemember'])) {
   $name = $_POST['name'];
   $address = $_POST['address'];
   $contact = $_POST['contact'];
-  $username = $_POST['username'];
+  $email = $_POST['email'];
   $password = $_POST['password'];
   
  
-  $query = "INSERT INTO employee (name, address,phone_no,password,username) VALUES ('$name','$address','$contact','$password','$username')";
+  $query = "INSERT INTO employee (name, address,phone_no) VALUES ('$name','$address','$contact')";
+  
   
   if ($dbConn->executeQuery($query) === true) {
-    echo "<script>alert('Database execute succeed..!');</script>";
-    header('location: staffView.php');
+    $employeeSearch = "select id from employee where name='$name' and address='$address' and phone_no='$contact'";
+    $result = $dbConn->executeQuery($employeeSearch);
+    if($result->num_rows > 0 ){
+      $row = $result->fetch_assoc();
+      $employee_id = $row['id'];
+      $userSql = "insert into users (employee_id, email,password) values('$employee_id','$email','$password')";
+      if($dbConn->executeQuery($userSql)){
+        echo `<div class="alert alert-success" role="alert"> employee add successfull </div>`;
+        header('location: staffView.php');
+      }
+    }
+    
   } else {
     echo "Error: " . $query . "<br>" . $dbConn->error;
   }	
@@ -56,7 +67,7 @@ if (isset($_POST['btncreatemember'])) {
                 <input type="text" name="contact" class="form-control" placeholder="phonenumber">
               </div>
               <div class="mb-4">
-                <input type="text" name="username" class="form-control" placeholder="username">
+                <input type="text" name="email" class="form-control" placeholder="email">
               </div>
               <div class="mb-4">
                 <input type="password" name="password" class="form-control" placeholder="password">
