@@ -39,7 +39,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="images p-3">
-                            <div class="text-center p-4"> <img class="img-fluid h-100" src="<?php echo $server; ?>clientapp/asset/images/products/<?php echo $r['image_name']; ?>" alt="Card Image Caption" width="250"> </div>
+                            <div class="text-center p-4"> <img class="img-fluid h-100z" src="<?php echo $server; ?>clientapp/asset/images/products/<?php echo $r['image_name']; ?>" alt="Card Image Caption" width="250"> </div>
                             <!-- <div class="thumbnail text-center"> <img onclick="change_image(this)" src="https://i.imgur.com/Rx7uKd0.jpg" width="70"> <img onclick="change_image(this)" src="https://i.imgur.com/Dhebu4F.jpg" width="70"> </div> -->
                         </div>
                     </div>
