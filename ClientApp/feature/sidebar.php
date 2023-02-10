@@ -28,6 +28,7 @@
 	</style>
 
 <body>
+   
     <!-- <div class="container-fluid sidenavbar" text-white> -->
     <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-highlight sidenavbar">
         <div class="d-flex flex-column align-items-center align-items-sm-start px-1 pt-2 text-dark min-vh-100">
@@ -80,6 +81,11 @@
                 <li>
                     <a href="inquiryView.php" class="nav-link px-0 align-middle text-decoration-none text-white p-4">
                         <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Manage Inquiry</span> 
+                    </a>
+                </li>
+                <li>
+                    <a href="/shoeproject_1/ClientApp/shared/loginStaff.php" class="nav-link px-0 align-middle text-decoration-none text-white p-4">
+                        <i class="bi bi-box-arrow-left"></i> <span class="ms-1 d-none d-sm-inline">Log Out</span> 
                     </a>
                 </li>
 
