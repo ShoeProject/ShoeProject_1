@@ -15,7 +15,7 @@ $r =$res->fetch_assoc();
 
 if(isset($_POST) & !empty($_POST)){
 	$name = ($_POST['name']);
-	$serial_number = ($_POST['serial_number']);
+	$code = ($_POST['code']);
 	$item_price = ($_POST['item_price']);
     $item_color =($_POST['item_color']);
     $item_size =($_POST['item_size']);
@@ -36,7 +36,7 @@ if(isset($_POST) & !empty($_POST)){
     // }
 
     // Execute query
-	$editquery = "UPDATE product SET name='$name',serial_no ='$serial_number',item_price=$item_price, item_color='$item_color', item_size=$item_size WHERE id='$id'";
+	$editquery = "UPDATE product SET name='$name',code ='$code',item_price=$item_price, item_color='$item_color', item_size=$item_size WHERE id='$id'";
 	
 	$res = $dbConn->executeQuery($editquery);
     echo "<script>alert('Database execute succeed..!');</script>";
@@ -76,8 +76,8 @@ if(isset($_POST) & !empty($_POST)){
 				<input type="text" class="form-control" name="name" value="<?php echo $r['name'];?>" required/>
             </div> 
             <div class="form-group">
-                <label>Serial Number</label>
-				<input type="text" class="form-control" name="serial_number" value="<?php echo $r['serial_no'];?>" required/>
+                <label>Product Code</label>
+				<input type="text" class="form-control" name="code" value="<?php echo $r['code'];?>" required/>
             </div> 
             <div class="form-group">
                 <label>Item Price</label>

@@ -130,11 +130,12 @@ session_start();
                             </thead>
                             <tbody>
                             <?php
+                                $x=0;
 						        if ($res5->num_rows > 0) {
 							      while ($r = $res5->fetch_assoc()) {
 						    ?> 
                                 <tr>
-                                    <th scope="row"><?php echo "#"; ?></th>
+                                    <th scope="row"><?php echo $x=$x+1; ?></th>
                                     <td><?php echo $r['odate']; ?></td>
                                     <td><?php echo $r['cname']; ?></td>
                                     <td><?php echo $r['cqty']; ?></td>
