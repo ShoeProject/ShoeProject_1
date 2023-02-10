@@ -13,6 +13,7 @@ include $db_path.'DBConnect.php';
 session_start();
 
 $id = $_SESSION['id'];
+$cus_id = $_SESSION['customer_id'];
 
 if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) {
 	$url = 'http://' . $_SERVER['HTTP_HOST']; // Get server
@@ -20,7 +21,7 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) {
 	header('Location: ' . $url, TRUE, 302);
 }
 
-$sql = "select * from cart where customer_id ='$id' ";
+$sql = "select * from cart where customer_id ='$cus_id'";
 //$sql = "SELECT cart.*, product.* FROM cart INNER JOIN product ON cart.product_id = product.id
 //WHERE cart.product_id = [specific_product_id];";
 $result = $dbConn->executeQuery($sql);

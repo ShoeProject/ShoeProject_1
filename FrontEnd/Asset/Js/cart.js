@@ -50,7 +50,7 @@ function addProduct() {
 function saveToDb(data){    
         var xhr = new XMLHttpRequest();
         xhr.open("GET", "http://localhost/shoeproject_1/Logic/CartLogic/savecart.php?data="+data, true);
-        console.log("http://localhost/shoeproject_1/Logic/CartLogic/savecart.php?data="+data);
+       // console.log("http://localhost/shoeproject_1/Logic/CartLogic/savecart.php?data="+data);
         xhr.onreadystatechange = function() {
         if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
             // Handle response from PHP function

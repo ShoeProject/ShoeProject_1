@@ -9,7 +9,7 @@
 				<!-- <p class="card-text"><?php echo $r['brand']; ?></p> -->
 
 				<div style="display: flex; justify-content: space-between; align-items: center;">
-					<div style="font-weight: 600;">$<span class="price"><?php echo $r['item_price']; ?></span></div>
+					<div style="font-weight: 600;">Rs. <span class="price"><?php echo $r['item_price']; ?></span></div>
 
 					<!-- Button add to cart -->
 					<button data-pid="<?php echo $r['id']; ?>" class="btn-2 buy-button" id="add-cart-1234">
