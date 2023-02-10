@@ -57,6 +57,12 @@
                     <i class="bi bi-chat-dots-fill"></i> <span class="ms-1 d-none d-sm-inline">Add News And Notify</span> 
                     </a>
                 </li>
+
+                <li>
+                    <a href="orderView.php" class="nav-link px-0 align-middle text-decoration-none text-white p-4">
+                    <i class="bi bi-shop"></i> <span class="ms-1 d-none d-sm-inline">Orders</span> 
+                    </a>
+                </li>
                 <li>
                     <a href="CategoryView.php" class="nav-link px-0 align-middle text-decoration-none text-white p-4">
                     <i class="bi bi-cart4"></i></i> <span class="ms-1 d-none d-sm-inline">Add Category</span> 

@@ -11,11 +11,41 @@ include $db_path.'DBConnect.php';
 $email = $password = $confirm_password = "";
 $email_err = $password_err = $confirm_password_err = "";
 
+
 $connection = $dbConn->getConnection();
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
+    
+
     $name = trim($_POST["name"]);
+    $age = trim($_POST["age"]);
+    $address = $_POST["address"];
+    $phoneNumber = trim($_POST["phone"]);
+    $CustomerId = "";
+
+    $customerInsert = "insert into customer(name, age, address, phone_no) values('$name','$age','$address','$phoneNumber');";
+    $searchCustomerId = "select id from customer where name='$name' and age='$age' and address='$address' and phone_no='$phoneNumber'";
+    echo "<script>console.log('".$searchCustomerId."')</script>";
+    if($dbConn->executeQuery($customerInsert)){
+    //if($mysqli_query($dbConn->getConnection(),$customerInsert)){
+        echo "true";
+        $result = $dbConn->executeQuery($searchCustomerId);
+        if($result->num_rows >0){
+            $row = $result->fetch_assoc();
+            $CustomerId = $row['id'];
+
+        }    
+        
+
+        echo "     id is ".$CustomerId."";
+    }
+
+    
+    
+        //echo '<script>alert("Oops!")</script>';
+    
+
     // Validate email
     if(empty(trim($_POST["email"]))){
         $email_err = "Please enter a email.";
@@ -69,16 +99,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $confirm_password_err = "Password did not match.";
         }
     }
+
+    if(empty($CustomerId)){
+        $customerId = null;
+    }
     
     // Check input errors before inserting in database
     if(empty($email_err) && empty($password_err) && empty($confirm_password_err)){
         
         // Prepare an insert statement
-        $sql = "INSERT INTO users (email, password) VALUES (?, ?)";
+        $sql = "INSERT INTO users (email, password,customer_id) VALUES (?, ?, ?)";
         $stmt = mysqli_prepare($connection, $sql);
         if($stmt){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ss",$param_email, $password);
+            mysqli_stmt_bind_param($stmt, "sss",$param_email, $password,$CustomerId);
             
             // Set parameters
             $param_email = $email;
@@ -106,39 +140,43 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <?php require('header.php') ?>
 
 
-    <div class="wrapper mx-auto p-5">
-        <h2>Sign Up</h2>
-        <p>Please fill this form to create an account.</p>
-        <form method="post">
-            <div class="form-group">
-                <label>Name</label>
-                <input type="text" name="name" class="form-control" value="">
-            </div>    
-            <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
-                <label>Email</label>
-                <input type="email" name="email" class="form-control" value="<?php echo $email; ?>" required>
-                <span class="help-block"><?php echo $email_err; ?></span>
-            </div>    
-            <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                <label>Password</label>
-                <input type="password" name="password" class="form-control" value="<?php echo $password; ?>" required>
-                <span class="help-block"><?php echo $password_err; ?></span>
-            </div>
-            <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
-                <label>Confirm Password</label>
-                <input type="password" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>" required>
-                <span class="help-block"><?php echo $confirm_password_err; ?></span>
-            </div>
-            <div>
-                &nbsp;
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Submit">
-                <input type="reset" class="btn btn-default" value="Reset">
-            </div>
-            <p>Already have an account? <a href="login.php">Login here</a>.</p>
-        </form>
-    </div>
+<div class="container mt-5 w-50">
+    <form method="post">
+      <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="name" class="form-control" placeholder="Enter your name">
+      </div>  
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input type="number" class="form-control" name="age" placeholder="Enter your age">
+      </div>
+      <div class="form-group">
+        <label for="address">Address</label>
+        <textarea class="form-control" name="address" rows="3" placeholder="Enter your address"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" class="form-control" name="phone" placeholder="Enter your phone number">
+      </div>
+      <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
+        <label>Email</label>
+        <input type="email" name="email" class="form-control" value="<?php echo $email; ?>" required>
+        <span class="help-block"><?php echo $email_err; ?></span>
+      </div> 
+      <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+        <label>Password</label>
+        <input type="password" name="password" class="form-control" value="<?php echo $password; ?>" required>
+        <span class="help-block"><?php echo $password_err; ?></span>
+     </div>
+     <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+        <label>Password</label>
+        <input type="password" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>" required>
+        <span class="help-block"><?php echo $confirm_password_err; ?></span>
+     </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      
+    </form>
+  </div>
     
     <?php require('footer.php') ?>
     
