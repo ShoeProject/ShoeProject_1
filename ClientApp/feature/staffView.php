@@ -5,7 +5,7 @@ $path .= "/ShoeProject_1/Logic/DataAccess/";
 include $path . 'DBConnect.php';
 
 
-$ReadSql = "SELECT * FROM employee";
+$ReadSql = "SELECT id,name,address,phone_no,username FROM employee";
 $res = $dbConn->executeQuery($ReadSql);
 
 ?>
@@ -40,7 +40,7 @@ $res = $dbConn->executeQuery($ReadSql);
 							<th>Employee Name </th>
 							<th>Address</th>
 							<th>Phone Number</th>
-                            <th> Age</th>
+                            <th> User Name</th>
                             <th> Action</th>
 						</tr>
 					</thead>
@@ -54,11 +54,11 @@ $res = $dbConn->executeQuery($ReadSql);
 									<td><?php echo $r['name']; ?></td>
 									<td> <?php echo $r['address']; ?></td>
                                     <td> <?php echo $r['phone_no']; ?></td>
-                                    <td> <?php echo $r['age']; ?></td>
+                                    <td> <?php echo $r['username']; ?></td>
 									
 									
 									<td>
-										<a href="staffUpdate.php?id=<?php echo $r['id']; ?>"><button type="button" class="btn btn-info">Edit</button></a>
+										<a href="staffUpdate.php?username=<?php echo $r['username']; ?>"><button type="button" class="btn btn-info">Edit</button></a>
 										<button type="button" class="btn btn-danger btn-xs" data-bs-toggle="modal" data-bs-target="#myModal">
   Delete
 </button>
@@ -82,7 +82,7 @@ $res = $dbConn->executeQuery($ReadSql);
       <!-- Modal footer -->
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-		<a href="staffDelete.php?id=<?php echo $r['id']; ?>"><button type="button" class="btn btn-danger"> Yes, Delete</button></a>
+		<a href="staffDelete.php?username=<?php echo $r['username']; ?>"><button type="button" class="btn btn-danger"> Yes, Delete</button></a>
       </div>
 
     </div>
