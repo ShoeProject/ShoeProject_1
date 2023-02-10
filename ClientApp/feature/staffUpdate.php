@@ -5,9 +5,9 @@ $path .= "/ShoeProject_1/Logic/DataAccess/";
 include $path . 'DBConnect.php';
 
 
-$username = $_GET['username'];
+$id = $_GET['id'];
 
-$SelSql = "SELECT name,address,phone_no,username FROM employee WHERE username='$username'";
+$SelSql = "SELECT name,address,phone_no,username FROM employee WHERE username='$id'";
 $res = $dbConn->executeQuery($SelSql);
 $r =$res->fetch_assoc();
 
@@ -16,7 +16,7 @@ if(isset($_POST) & !empty($_POST)){
 	$name = ($_POST['name']);
 	$address = ($_POST['address']);
     $contact = ($_POST['contact']);
-    $Nusername = ($_POST['Nusername']);
+    //$Nusername = ($_POST['Nusername']);
 	
 	// store n upload image
     // $image = $_FILES['image']['name']; 
@@ -35,7 +35,7 @@ if(isset($_POST) & !empty($_POST)){
     // }
 
     // Execute query
-	$editquery = "UPDATE employee SET name='$name',address ='$address',phone_no='$contact',username='$Nusername' WHERE username='$username'";
+	$editquery = "UPDATE employee SET name='$name',address ='$address',phone_no='$contact' WHERE username='$username'";
 	
 	$res = $dbConn->executeQuery($editquery);
     echo "<script>alert('Database execute succeed..!');</script>";
@@ -84,10 +84,7 @@ if(isset($_POST) & !empty($_POST)){
 				<input type="text" class="form-control" name="contact" value="<?php echo $r['phone_no'];?>" required/>
             </div> 
 
-            <div class="form-group">
-                <label>User name</label>
-				<input type="text" class="form-control" name="Nusername" value="<?php echo $r['username'];?>" required/>
-            </div> 
+            
            
 
            
