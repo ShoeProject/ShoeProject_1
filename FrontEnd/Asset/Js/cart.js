@@ -12,6 +12,20 @@ window.addEventListener("load", function() {
 	setCartCount(prod.length);
 });
 
+function clearmyCartLocalStorage(){
+	console.log("cartCleared");
+	let prod = [];	
+	localStorage.setItem('myCart', JSON.stringify(prod));	
+	setCartCount(prod.length);
+}
+
+function findCartDeailsRelatedToCustomer(items){
+	console.log(items);
+	clearmyCartLocalStorage();
+	localStorage.setItem('myCart', JSON.stringify(items));
+	setCartCount(items.length);
+}
+
 // window.onbeforeunload = function() {
 // 	// let prod = JSON.parse(localStorage.getItem('myCart')) || [];
 // 	// localStorage.setItem('myCart', JSON.stringify(prod));

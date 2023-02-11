@@ -1,8 +1,13 @@
+<script src="<?php echo $server ?>FrontEnd/Asset/Js/cart.js"></script>
 <?php 
 
 $server = 'http://' . $_SERVER['SERVER_NAME'] . '/shoeproject_1/'; 
 
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    // There is no active session
+    session_start();
+}
+
  
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
@@ -48,26 +53,40 @@ if (isset($_POST['btnsubmit'])){
         
         if ($param_password == base64_decode($user['password'])) {
             //Password is correct, so start a new session
-            session_start();
+            //session_start();
 
 
-            
+            $cus_id = $user['customer_id'];
             // Store data in session variables
             $_SESSION["loggedin"] = true;
             $_SESSION["id"] = $user['id'];
-            $_SESSION["customer_id"] = $user['customer_id'];
+            $_SESSION["customer_id"] = $cus_id;
             $_SESSION["employee_id"] = $user['employee_id'];
             $_SESSION["email"] = $param_email;
          
-           
+            $carts;
                                  
             
             // Redirect user to welcome page
             $url = 'http://' . $_SERVER['HTTP_HOST']; // Get server
             if(!empty($user['customer_id'])){
+
+                $cartSql = "select product_id,qty from cart where customer_id ='$cus_id'";
+                $cartResult = $dbConn->executeQuery($cartSql);
+                if($cartResult->num_rows > 0){
+                    while($row = $result->fetch_assoc()) {
+                        $array = array($row['product_id'],$row['qty']);
+                        $carts->array_push($array);
+                    }
+                }
+                echo '<script>alert("hello cart");</script>';
+                $jsonArray = json_encode($carts);
+                echo "<script>findCartDeailsRelatedToCustomer('$carts');</script>";
+
                 $_SESSION["role"] = "Customer";   
                 $url .= "/ShoeProject_1/FrontEnd/";
                 header('Location: ' . $url, TRUE, 302);
+                
 
             }else{
                 $_SESSION["role"] = "Staff";
@@ -111,7 +130,7 @@ include $path."/frontend/shared/header.php";
                     </div>
                     <div class="form-row">
                         <div class="col-lg-7">
-                            <button  class="btn-1 mt-3 mb-5" name="btnsubmit" type="submit" >Login</button>
+                            <button  class="btn-1 mt-3 mb-5" name="btnsubmit" type="submit">Login</button>
                         </div>
                     </div>
                 </form>
