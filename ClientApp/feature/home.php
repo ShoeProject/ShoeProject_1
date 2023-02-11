@@ -32,7 +32,7 @@ session_start();
 <html>
 
 <head>
-    <title>Login Page</title>
+    <title>Home Page</title>
     <link href="../../vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../../vendor/twbs/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
     <link rel="stylesheet" href="asset/css/style.css" />
@@ -43,7 +43,7 @@ session_start();
 
 <body>
     <div class="container-fluid">
-        <div><?php include '../shared/header.php'; ?></div>
+        <div class="mb-8"><?php include '../shared/header.php'; ?></div>
         <div class="row flex-nowrap">
             <?php include 'sidebar.php' ?>
             <div class="col py-1">

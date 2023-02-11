@@ -39,7 +39,7 @@ $res = $dbConn->executeQuery($ReadSql);
 							<th>Customer Name</th>
 							<th>Inquiry Subject </th>
 							<th>Inquiry</th>
-							<th>Action</th>
+							<!--<th>Action</th>-->
 						</tr>
 					</thead>
 					<tbody>
@@ -52,8 +52,8 @@ $res = $dbConn->executeQuery($ReadSql);
 							<td><?php echo $r['customer_id']; ?></td>
           					<td><?php echo $r['inquiry_subject']; ?></td>
          	 				<td><?php echo $r['inquiry']; ?></td>
-						<td>
-							<a href="#"><button type="button" class="btn btn-info">Reply</button></a></td>
+						<!-- <td>
+							<a href="#"><button type="button" class="btn btn-info">Reply</button></a></td>-->
 						</tr>
 						<?php }
 						} ?>
