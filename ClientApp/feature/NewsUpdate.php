@@ -65,15 +65,15 @@ if(isset($_POST) & !empty($_POST)){
 
 
 
-	<div class="container">
+	<div class="container mx-4">
 	<?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
 		<h2 class="my-4">UPDATE News</h2>
 		<form method="post" enctype="multipart/form-data">
-			<div class="form-group">
+			<div class="form-group mb-4">
                 <label>Name</label>
 				<input type="text" class="form-control" name="newsHeading" value="<?php echo $r['newsHeading'];?>" required/>
             </div> 
-            <div class="form-group">
+            <div class="form-group mb-4">
                 <label>Serial Number</label>
 				<input type="text" class="form-control" name="news_content" value="<?php echo $r['newsBody'];?>" required/>
             </div> 
