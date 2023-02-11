@@ -11,7 +11,7 @@ if (isset($_POST['btncreatemember'])) {
   $address = $_POST['address'];
   $contact = $_POST['contact'];
   $email = $_POST['email'];
-  $password = $_POST['password'];
+  $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
   
  
   $query = "INSERT INTO employee (name, address,phone_no) VALUES ('$name','$address','$contact')";

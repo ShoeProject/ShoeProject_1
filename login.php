@@ -44,7 +44,9 @@ if (isset($_POST['btnsubmit'])){
     $user = mysqli_fetch_assoc($result);
 
     if ($user) {
-        if ($param_password == $user['password']) {
+        //$verifyPass= password_verify('$password',$user['password']);
+        
+        if ($param_password == base64_decode($user['password'])) {
             //Password is correct, so start a new session
             session_start();
 
@@ -76,6 +78,7 @@ if (isset($_POST['btnsubmit'])){
         } else {
             //$password_err = "The password you entered was not valid.";
             echo '<script>alert("Password is invalid...!")</script>';
+            
         }
     } else {
         $email_err = "No account found with that email.";
