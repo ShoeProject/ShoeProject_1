@@ -4,7 +4,7 @@ $path .= "/ShoeProject_1";
 $db_path = $path."/Logic/DataAccess/";
 
 include $db_path.'DBConnect.php';
-$ReadSql = "SELECT c.name as cname,c.address as cAddress,u.email as cEmail,c.phone_no as cPhone
+$ReadSql = "SELECT c.id,c.name as cname,c.address as cAddress,u.email as cEmail,c.phone_no as cPhone
 FROM customer as c ,users as u where c.id = u.customer_id";
 $res = $dbConn->executeQuery($ReadSql);
 
@@ -58,8 +58,34 @@ $res = $dbConn->executeQuery($ReadSql);
           <td><?php echo $r['cEmail']; ?></td>
           <td><?php echo $r['cPhone']; ?></td>
           <td>
-										<button type="button" name ="delete "class="btn btn-danger">Delete</button>
+          <button type="button" class="btn btn-danger btn-xs" data-bs-toggle="modal" data-bs-target="#myModal_<?php echo $r['id']; ?>">
+  Delete
+</button>
     </tr>
+    <div class="modal" id="myModal_<?php echo $r['id']; ?>">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Delete Customer</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+       Are You Sure?
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+		<a href="customerDelete.php?id=<?php echo $r['id']; ?>"><button type="button" class="btn btn-danger"> Yes, Delete</button></a>
+      </div>
+
+    </div>
+  </div>
+</div>
     <?php }
 						      } ?>
     

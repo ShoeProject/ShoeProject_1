@@ -69,28 +69,28 @@ if(isset($_POST) & !empty($_POST)){
 
 
 
-	<div class="container">
+	<div class="container mx-4" >
 	<?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
 		<h2 class="my-4">UPDATE Member</h2>
-		<form method="post" enctype="multipart/form-data">
-			<div class="form-group">
+		<form method="post" enctype="multipart/form-data ">
+			<div class="form-group mb-4">
                 <label>Name</label>
 				<input type="text" class="form-control" name="name" value="<?php echo $r['eName'];?>" required/>
             </div> 
-            <div class="form-group">
+            <div class="form-group mb-4">
                 <label>Address</label>
 				<input type="text" class="form-control" name="address" value="<?php echo $r['eAddress'];?>" required/>
             </div> 
 
-            <div class="form-group">
+            <div class="form-group mb-4">
                 <label>Phone Number</label>
 				<input type="text" class="form-control" name="contact" value="<?php echo $r['ePhone'];?>" required/>
             </div> 
-            <div class="form-group">
+            <div class="form-group mb-4">
                 <label>Email</label>
 				<input type="text" class="form-control" name="email" value="<?php echo $r['eEmail'];?>" required/>
             </div> 
-            <div class="form-group">
+            <div class="form-group mb-4">
                 <label>Password</label>
                 <?php $uPass = base64_decode($r['ePassword']) ?>
 				<input type="text" class="form-control" name="password" value="<?php echo $uPass;?>" required/>
