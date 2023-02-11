@@ -65,7 +65,7 @@ Delete
 </button>
 
 <!-- The Modal -->
-<div class="modal" id="myModal">
+<div class="modal" id="myModal_<?php echo $r['id']?>">
   <div class="modal-dialog">
     <div class="modal-content">
 

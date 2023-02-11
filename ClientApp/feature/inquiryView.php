@@ -5,7 +5,7 @@ $path .= "/ShoeProject_1/Logic/DataAccess/";
 include $path . 'DBConnect.php';
 
 
-$ReadSql = "SELECT * FROM inquiry";
+$ReadSql = "SELECT c.name as cName,i.inquiry_subject as iSubject,i.inquiry as cInquiry FROM inquiry as i,customer as c where c.id=i.customer_id";
 $res = $dbConn->executeQuery($ReadSql);
 
 ?>
@@ -39,7 +39,7 @@ $res = $dbConn->executeQuery($ReadSql);
 							<th>Customer Name</th>
 							<th>Inquiry Subject </th>
 							<th>Inquiry</th>
-							<th>Action</th>
+							<!--<th>Action</th>-->
 						</tr>
 					</thead>
 					<tbody>
@@ -49,11 +49,11 @@ $res = $dbConn->executeQuery($ReadSql);
 						    ?> 
     					<tr>
 							<!-- customer name need here -->
-							<td><?php echo $r['customer_id']; ?></td>
-          					<td><?php echo $r['inquiry_subject']; ?></td>
-         	 				<td><?php echo $r['inquiry']; ?></td>
-						<td>
-							<a href="#"><button type="button" class="btn btn-info">Reply</button></a></td>
+							<td><?php echo $r['cName']; ?></td>
+          					<td><?php echo $r['iSubject']; ?></td>
+         	 				<td><?php echo $r['cInquiry']; ?></td>
+						<!-- <td>
+							<a href="#"><button type="button" class="btn btn-info">Reply</button></a></td>-->
 						</tr>
 						<?php }
 						} ?>
