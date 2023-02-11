@@ -36,8 +36,8 @@ $result = $dbConn->executeQuery($sql);
 				<thead> 
 					<tr> 
 						<th>Prod No.</th> 
-						<th>Title</th> 
-						<th>Quantity</th> 
+						<th>quantity</th> 
+						<th>--</th> 
 						<th>Price</th> 
 					</tr> 
 				</thead> 
@@ -47,7 +47,7 @@ $result = $dbConn->executeQuery($sql);
 						while($row = $result->fetch_assoc()) {
 							echo "<tr>"
 							."<td>".$row['product_id']."</td>".
-							"<td></td>".
+							"<td>".$row['qty']."</td>".
 							"<td></td>".
 							"<td></td>".
 							"</tr>";
