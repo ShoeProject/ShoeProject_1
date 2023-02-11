@@ -68,16 +68,16 @@ $r =$res->fetch_assoc();
                     <h4>Confirm Delivery Information</h4>
                     <div class="form-group">
                         <label for="" class="control-label">Customer Name</label>
-                        <input type="text" name="first_name" required="" class="form-control" value="<?php echo $_SESSION['login_first_name'] ?>">
+                        <input type="text" name="first_name" required="" class="form-control" value="<?php echo $row['name'] ?>">
                     </div>
                    
                     <div class="form-group">
                         <label for="" class="control-label">Contact</label>
-                        <input type="text" name="mobile" required="" class="form-control" value="<?php echo $_SESSION['login_mobile'] ?>">
+                        <input type="text" name="mobile" required="" class="form-control" value="<?php echo $row['phone_no'] ?>">
                     </div>
                     <div class="form-group">
                         <label for="" class="control-label">Address</label>
-                        <textarea cols="30" rows="3" name="address" required="" class="form-control"><?php echo $_SESSION['login_address'] ?></textarea>
+                        <textarea cols="30" rows="3" name="address" required="" class="form-control"><?php echo $row['address'] ?></textarea>
                     </div>
                     <div class="form-group">
                         <label for="" class="control-label">Email</label>
