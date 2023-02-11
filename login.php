@@ -44,7 +44,9 @@ if (isset($_POST['btnsubmit'])){
     $user = mysqli_fetch_assoc($result);
 
     if ($user) {
-        if ($param_password == $user['password']) {
+        //$verifyPass= password_verify('$password',$user['password']);
+        
+        if ($param_password == base64_decode($user['password'])) {
             //Password is correct, so start a new session
             session_start();
 
@@ -76,6 +78,7 @@ if (isset($_POST['btnsubmit'])){
         } else {
             //$password_err = "The password you entered was not valid.";
             echo '<script>alert("Password is invalid...!")</script>';
+            
         }
     } else {
         $email_err = "No account found with that email.";
@@ -90,13 +93,13 @@ include $path."/frontend/shared/header.php";
     <div class="container">
         <div class="row no-gutters">            
             <div class="col-md-5">
-                <img class="login-image" src="<?php echo $server; ?>ClientApp/Asset/images/shoe.png" class="img-fluid h-100" alt=""/>
+                <img class="login-image mt-5" src="<?php echo $server; ?>ClientApp/Asset/images/pair-trainers.jpg" class="img-fluid h-200" alt=""/>
             </div>
-            <div class="col-md-5 login-frame">
-                <h1 class="font-weight-bold py-3">Login</h1>
-                <h4>Sign into your account</h4>
+            <div class="col-md-5 ">
+                <h1 class="font-weight-bold py-3 ">Sign into your account</h1>
+                <h4></h4>
                 <form method="POST" >
-                    <div class="form-row">
+                    <div class="form-row p">
                         <div class="col-lg-7">
                             <input name="email" type="email" placeholder="Email Address" class="form-control my-3 p-4" required/>
                         </div>

@@ -23,7 +23,7 @@ if(isset($_POST['SubmitUser'])){
     $address = $_POST["address"];
     $phoneNumber = trim($_POST["phone"]);
     $email= $_POST["email"];
-    $password = $_POST["password"];
+    $password = base64_encode($_POST["password"]);
 
     $customerInsert = "insert into customer(name, age, address, phone_no) values('$name','$age','$address','$phoneNumber');";
     $searchCustomerId = "select id from customer where name='$name' and age='$age' and address='$address' and phone_no='$phoneNumber'";

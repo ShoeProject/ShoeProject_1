@@ -8,7 +8,7 @@ include $path . 'DBConnect.php';
 $id = $_GET['id'];
 
 $SelSql = "SELECT e.id as empId,e.name as eName ,e.address as eAddress ,e.phone_no as ePhone,u.email as eEmail,u.password as ePassword
-FROM employee as e,users as u where e.id = u.employee_id";
+FROM employee as e,users as u where e.id = u.employee_id AND u.employee_id='$id'";
 $res = $dbConn->executeQuery($SelSql);
 $r =$res->fetch_assoc();
 
@@ -18,7 +18,7 @@ if(isset($_POST) & !empty($_POST)){
 	$address = ($_POST['address']);
     $contact = ($_POST['contact']);
     $email = ($_POST['email']);
-    $password = ($_POST['password']);
+    $password = base64_encode($_POST['password']);
     //$Nusername = ($_POST['Nusername']);
 	
 	// store n upload image
@@ -92,7 +92,8 @@ if(isset($_POST) & !empty($_POST)){
             </div> 
             <div class="form-group">
                 <label>Password</label>
-				<input type="text" class="form-control" name="password" value="<?php echo $r['ePassword'];?>" required/>
+                <?php $uPass = base64_decode($r['ePassword']) ?>
+				<input type="text" class="form-control" name="password" value="<?php echo $uPass;?>" required/>
             </div> 
 			<input type="submit" class="btn btn-primary" value="Update" />
 		</form>
