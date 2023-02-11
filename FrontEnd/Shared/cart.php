@@ -45,7 +45,12 @@ $result = $dbConn->executeQuery($sql);
 					<?php 
 					if($result->num_rows > 0){
 						while($row = $result->fetch_assoc()) {
-							echo "<tr>"."<td>".$row['product_id']."</td>"."</tr>";
+							echo "<tr>"
+							."<td>".$row['product_id']."</td>".
+							"<td></td>".
+							"<td></td>".
+							"<td></td>".
+							"</tr>";
 						}
 					}
 					?>

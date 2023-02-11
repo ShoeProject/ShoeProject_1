@@ -1,15 +1,55 @@
-var cart;
 
-window.addEventListener("load", function() {
-    // your code here
-    document.getElementById("add-cart-1234").addEventListener("click", addProduct);
-    //const data = element.dataset.pid;
-    cart= document.querySelector('.cart span');
-    console.log(cart);
+let products = document.querySelectorAll('.product');
+	console.log(products);
+let	cart= document.querySelector('.cart span');
+	console.log(cart);	
 
+// window.addEventListener("load", function() {
+
+// });
+
+products.forEach(function (element) {
+	btnAdd = element.querySelector('.buy-button');
+	btnAdd.addEventListener('click', addProduct);
 });
 
+function populate() { // get items on page load
+	let prod = JSON.parse(localStorage.getItem('myCart')) || 0;
+
+	if (prod) cart.textContent = prod.length + ' ';
+
+	if (!cartProducts || prod == 0) return;
+
+	let total = 0;
+	prod.forEach(function (el) {
+		let t = el.price.split('').filter(a => !isNaN(a)).join(''); //convert to number
+		total += (Number(t) * el.quantity);
+	});
+
+	prod.forEach(function (p) { // fill the cart products
+
+		const el = document.createElement('tr');
+		el.innerHTML = (` 
+			<th>${p.p_id}</th>
+			<td>${p.title}</td>
+			<td>${p.quantity}</td>
+			<td>${p.price}</td>
+		`);
+		cartProducts.appendChild(el);
+	});
+
+	const totalContainer = document.createElement('div');
+	totalContainer.style.fontSize = '1.2rem';
+	totalContainer.textContent = `Total : $${total}`;
+
+	const wrapper = document.querySelector('.wrapper');
+	wrapper.insertBefore(totalContainer, btnCheckout);
+
+};
+
+
 function addProduct() {
+	console.log("addProduct");
 	const pid = this.dataset.pid;
 	const parent = this.parentNode;
 	const productBody = parent.parentNode;
