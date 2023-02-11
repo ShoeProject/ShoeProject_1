@@ -7,7 +7,8 @@ include $path . 'DBConnect.php';
 
 $id = $_GET['id'];
 
-$SelSql = "SELECT name,address,phone_no,username FROM employee WHERE username='$id'";
+$SelSql = "SELECT e.id as empId,e.name as eName ,e.address as eAddress ,e.phone_no as ePhone,u.email as eEmail,u.password as ePassword
+FROM employee as e,users as u where e.id = u.employee_id";
 $res = $dbConn->executeQuery($SelSql);
 $r =$res->fetch_assoc();
 
@@ -16,6 +17,8 @@ if(isset($_POST) & !empty($_POST)){
 	$name = ($_POST['name']);
 	$address = ($_POST['address']);
     $contact = ($_POST['contact']);
+    $email = ($_POST['email']);
+    $password = ($_POST['password']);
     //$Nusername = ($_POST['Nusername']);
 	
 	// store n upload image
@@ -35,7 +38,7 @@ if(isset($_POST) & !empty($_POST)){
     // }
 
     // Execute query
-	$editquery = "UPDATE employee SET name='$name',address ='$address',phone_no='$contact' WHERE username='$username'";
+	$editquery = "UPDATE employee as e ,users as u SET e.name='$name',e.address ='$address',e.phone_no='$contact',u.email='$email',u.password='$password' WHERE e.id='$id' AND e.id=u.employee_id";
 	
 	$res = $dbConn->executeQuery($editquery);
     echo "<script>alert('Database execute succeed..!');</script>";
@@ -72,22 +75,25 @@ if(isset($_POST) & !empty($_POST)){
 		<form method="post" enctype="multipart/form-data">
 			<div class="form-group">
                 <label>Name</label>
-				<input type="text" class="form-control" name="name" value="<?php echo $r['name'];?>" required/>
+				<input type="text" class="form-control" name="name" value="<?php echo $r['eName'];?>" required/>
             </div> 
             <div class="form-group">
                 <label>Address</label>
-				<input type="text" class="form-control" name="address" value="<?php echo $r['address'];?>" required/>
+				<input type="text" class="form-control" name="address" value="<?php echo $r['eAddress'];?>" required/>
             </div> 
 
             <div class="form-group">
-                <label>Address</label>
-				<input type="text" class="form-control" name="contact" value="<?php echo $r['phone_no'];?>" required/>
+                <label>Phone Number</label>
+				<input type="text" class="form-control" name="contact" value="<?php echo $r['ePhone'];?>" required/>
             </div> 
-
-            
-           
-
-           
+            <div class="form-group">
+                <label>Email</label>
+				<input type="text" class="form-control" name="email" value="<?php echo $r['eEmail'];?>" required/>
+            </div> 
+            <div class="form-group">
+                <label>Password</label>
+				<input type="text" class="form-control" name="password" value="<?php echo $r['ePassword'];?>" required/>
+            </div> 
 			<input type="submit" class="btn btn-primary" value="Update" />
 		</form>
 	</div>

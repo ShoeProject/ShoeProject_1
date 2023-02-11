@@ -16,7 +16,6 @@ if (isset($_POST['btncreatemember'])) {
  
   $query = "INSERT INTO employee (name, address,phone_no) VALUES ('$name','$address','$contact')";
   
-  
   if ($dbConn->executeQuery($query) === true) {
     $employeeSearch = "select id from employee where name='$name' and address='$address' and phone_no='$contact'";
     $result = $dbConn->executeQuery($employeeSearch);
@@ -56,21 +55,21 @@ if (isset($_POST['btncreatemember'])) {
         <div class="container-fluid">
           <form class="w-75" method="POST" action="">
             <fieldset enabled>
-              <legend>Staff management</legend>
+              <legend>Shop - Staff management</legend>
               <div class="mb-4 pt-5">
-                <input type="text" name="name" class="form-control" placeholder="Employee Name">
+                <input type="text" name="name" class="form-control" placeholder="Enter the Employee Name" required>
               </div>
               <div class="mb-4">
-                <input type="text" name="address" class="form-control" placeholder="Address">
+                <input type="text" name="address" class="form-control" placeholder="Enter the Employee Address" required>
               </div>
               <div class="mb-4">
-                <input type="text" name="contact" class="form-control" placeholder="phonenumber">
+                <input type="text" name="contact" class="form-control" placeholder="Enter the Employee Phone Number" required>
               </div>
               <div class="mb-4">
-                <input type="text" name="email" class="form-control" placeholder="email">
+                <input type="email" name="email" class="form-control" placeholder="Enter the Employee Email" required>
               </div>
               <div class="mb-4">
-                <input type="password" name="password" class="form-control" placeholder="password">
+                <input type="password" name="password" class="form-control" placeholder="Enter the Employee Password" required>
               </div>
               <!--<div class="mb-4">
                 <label for="disabledSelect" class="form-label">User Privilege</label>
@@ -79,10 +78,10 @@ if (isset($_POST['btncreatemember'])) {
                   <option>Stock Keeper</option>
                 </select> -->
               </div>
-              <div class="sizebtn">
-                <button type="submit" name="btncreatemember" class="btn btn-warning">Create Member</button>
+              <div class="sizebtn p-3">
+                <button type="submit" name="btncreatemember" class="btn btn-primary">Create Member</button>
                 <!-- <button type="submit" name="updbtn" class="btn btn-warning">Update Member</button> -->
-                <button type="submit" class="btn btn-warning ">Reset</button>
+                <button type="reset" class="btn btn-primary mx-3">Reset</button>
               </div>
             </fieldset>
           </form>

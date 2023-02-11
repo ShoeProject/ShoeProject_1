@@ -67,28 +67,28 @@ if(isset($_POST) & !empty($_POST)){
 
 
 
-	<div class="container">
+	<div class="container mx-3">
 	<?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
 		<h2 class="my-4">Update Product</h2>
-		<form method="post" enctype="multipart/form-data">
-			<div class="form-group">
+		<form method="post" enctype="multipart/form-data" >
+			<div class="form-group mb-4">
                 <label>Name</label>
 				<input type="text" class="form-control" name="name" value="<?php echo $r['name'];?>" required/>
             </div> 
-            <div class="form-group">
+            <div class="form-group mb-4">
                 <label>Product Code</label>
 				<input type="text" class="form-control" name="code" value="<?php echo $r['code'];?>" required/>
             </div> 
-            <div class="form-group">
+            <div class="form-group mb-4">
                 <label>Item Price</label>
 				<input type="text" class="form-control" name="item_price" value="<?php echo $r['item_price'];?>"/>
             </div> 
-            <div class="form-group">
+            <div class="form-group mb-4">
                 <label>Item Color</label>
 				<input type="text" class="form-control" name="item_color" value="<?php echo $r['item_color'];?>"/>
             </div>
 
-            <div class="form-group">
+            <div class="form-group mb-4">
                 <label>Item Size</label>
 				<input type="text" class="form-control" name="item_size" value="<?php echo $r['item_size'];?>"/>
             </div>

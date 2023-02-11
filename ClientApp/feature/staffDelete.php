@@ -4,8 +4,8 @@ $path .= "/ShoeProject_1/Logic/DataAccess/";
 
 include $path . 'DBConnect.php';
 
-$username = $_GET['username'];
-$DelSql = "DELETE FROM employee WHERE username='$username'";
+$id = $_GET['id'];
+$DelSql = "DELETE FROM employee WHERE id='$id'";
 $res =$dbConn->executeQuery($DelSql);
 if($res){
 	header('location: staffView.php');

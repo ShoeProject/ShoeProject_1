@@ -4,7 +4,8 @@ $path .= "/ShoeProject_1";
 $db_path = $path."/Logic/DataAccess/";
 
 include $db_path.'DBConnect.php';
-$ReadSql = "SELECT * FROM customer";
+$ReadSql = "SELECT c.name as cname,c.address as cAddress,u.email as cEmail,c.phone_no as cPhone
+FROM customer as c ,users as u where c.id = u.customer_id";
 $res = $dbConn->executeQuery($ReadSql);
 
 ?>
@@ -52,10 +53,12 @@ $res = $dbConn->executeQuery($ReadSql);
     
     
           <th scope="row"><?php echo $x=$x+1; ?></th>
-          <td><?php echo $r['name']; ?></td>
-          <td><?php echo $r['address']; ?></td>
-          <td>abc@gmail.com</td>
-          <td><?php echo $r['phone_no']; ?></td>
+          <td><?php echo $r['cname']; ?></td>
+          <td><?php echo $r['cAddress']; ?></td>
+          <td><?php echo $r['cEmail']; ?></td>
+          <td><?php echo $r['cPhone']; ?></td>
+          <td>
+										<button type="button" name ="delete "class="btn btn-danger">Delete</button>
     </tr>
     <?php }
 						      } ?>
