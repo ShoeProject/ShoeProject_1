@@ -11,7 +11,7 @@
 				<div style="display: flex; justify-content: space-between; align-items: center;">
 					<div style="font-weight: 600;">Rs. <span class="price"><?php echo $r['item_price']; ?></span></div>
 					<!-- <a href="<?php echo $server; ?>frontend/shared/addCart.php?id=<?php echo $r['id']; ?>" >					 -->
-					<button  class="btn-2 buy-button" id="add-cart-<?php echo $r['id']; ?>" onclick="addProduct(this.id)">
+					<button  class="btn-2 buy-button" id="add-cart-<?php echo $r['id']; ?>" onclick="addProduct('<?php echo $r['id']; ?>')">
 						<span  class="text-white">
 							<i class="fa fa-shopping-cart text-white"></i>
 							Add to cart
