@@ -130,7 +130,7 @@ $user_logged = false;
 					<?php
 					if ($user_logged) { ?>
 						<li class="nav-item mr-sm-2 ml-2">
-							<a class="nav-link btn btn-dark text-white" href="<?php echo $server; ?>logout.php"><span><i class="fa fa-sign-out text-white"></i></span>Sign Out</a>
+							<a class="nav-link btn btn-dark text-white" href="<?php echo $server; ?>logout.php" ><span><i class="fa fa-sign-out text-white"></i></span>Sign Out</a>
 						</li>
 					<?php } else { ?>
 						<li class="nav-item mr-sm-2 ml-2">

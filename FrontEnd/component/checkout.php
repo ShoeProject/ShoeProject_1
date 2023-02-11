@@ -15,6 +15,14 @@ include $db_path.'DBConnect.php';
 
 $cart_id = $_GET['cart_id'];
 
+$server = 'http://' . $_SERVER['SERVER_NAME'] . '/shoeproject_1/';
+if (session_status() == PHP_SESSION_NONE) {
+    // There is no active session
+    session_start();
+} 
+
+$customerId = $_SESSION['customer_id'];
+
 $sql = "select * from cart where id ='$cart_id'";
 $result = $dbConn->executeQuery($sql);
 $cart_qty;$prod_qty;
