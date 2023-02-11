@@ -1,7 +1,10 @@
 <?php
 
 $server = 'http://' . $_SERVER['SERVER_NAME'] . '/shoeproject_1/';
-
+if (session_status() == PHP_SESSION_NONE) {
+    // There is no active session
+    session_start();
+} 
 $user_logged = false;
 
 ?>
@@ -92,12 +95,12 @@ $user_logged = false;
 
 					<?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 						$user_logged = true;
-						if ($_SESSION['role'] == 'admin') { ?>
-							<li class="nav-item">
-								<a class="nav-link text-dark" href="<?php echo $server; ?>clientapp/feature/view.php">Products</a>
-							</li>
-					<?php }
-					} ?>
+						echo $user_logged."";
+					}
+
+					
+					 ?>
+					
 
 				</ul>
 				<ul class="navbar-nav">
