@@ -89,6 +89,7 @@ $user_logged = false;
    background: linear-gradient(to right, #24243e, #302b63, #0f0c29);">
 			<div class="navbar-collapse collapse justify-content-between">
 				<ul class="navbar-nav" id="navbar">
+					
 					<li class="nav-item active">
 						<a class="text-white no-underline" href="<?php echo $server; ?>FrontEnd/index.php"> Genius Shoes</a>
 					</li>
@@ -108,8 +109,15 @@ $user_logged = false;
 						<input id="searchInput" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 						<button id="searchBtn" class="btn btn-outline-light m-2 my-sm-0" type="button">Search</button>
 					</div>
+					
 				</ul>
 				<ul class="navbar-nav">
+				<li class="nav-item mx-5">
+					
+                    <a class="nav-link px-2 text-white" href="/shoeproject_1/FrontEnd/component/inquiry.php">Inquiry Us
+					<i class="bi bi-question-circle text-white" style="font-size: 18px;"></i></a>
+                </li>
+
 					<li class="nav-item cart">
 						<a class="nav-link btn bg-warning" href="<?php echo $server; ?>FrontEnd/Shared/cart.php">
 							<span class="text-white">0 </span>

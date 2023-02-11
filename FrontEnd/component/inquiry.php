@@ -13,8 +13,9 @@ $connection = $dbConn->getConnection();
 session_start();
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $name = ($_POST["name"]);
-    $contact = ($_POST["contact"]);
+    //$name = ($_POST["name"]);
+    //$contact = ($_POST["contact"]);
+    $customerId = 
     $inquirySubject= ($_POST["inquirySubject"]);
     $message = ($_POST["message"]);
     $sql = "INSERT INTO inquiry (inquiry_subject, inquiry) VALUES (?,?)";
@@ -25,7 +26,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             if(mysqli_stmt_execute($stmt)){
                 // Redirect to login page
-                header("location: /ShoeProject_1/login.php");
+                header("location: /ShoeProject_1/FrontEnd/index.php");
             } else{
                 echo "Something went wrong. Please try again later.\n";
                 print_r($stmt->error_list);
@@ -45,7 +46,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <?php require('../Shared/header.php') ?>
 
 
-    <div class="mx-auto p-5">
+    <div class="mx-auto p-5 row no-gutters">
         <h2  >Inquiry </h2>
         <p class="mt-4 ">SEND A MESSAGE</p>
         <form method="post"> 
@@ -55,7 +56,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </div> 
             <div class="form-group w-50 mb-4">
                 <label>Inquiry Message</label>
-                <textarea class="form-control" name="address" rows="3" placeholder="Enter your Inquiry" required></textarea>
+                <textarea class="form-control" name="message" rows="3" placeholder="Enter your Inquiry" required></textarea>
           
             <div>
                 &nbsp;
@@ -66,25 +67,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </div>
            
         </form>
-    </div>
-    <div >
-        <div>
-            <ul class="list-unstyled">
-                <li class="fw-bold my-2 text-white"><a href="<?php echo $server; ?>FrontEnd/component/inquiry.php" class="text-decoration-none text-white">Contact US</a></li>
-                <li> <i class ="text-black">&nbsp;&nbsp;&nbsp;260,&nbsp;Colombo,&nbsp;Sri Lanka </i></li>
-                <li> <i class ="text-black">&nbsp;&nbsp;GenShoes@gmail.com </i></li>
-                <li> <i class ="text-black">&nbsp;&nbsp;011 &nbsp;296 &nbsp;6520 </i></li>
-            </ul>
-        </div>
-        <div class="mt-4 text-end ">
+
+        <div class="mt-4 ">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.524669482761!2d79.99932505045464!3d6.827513195041341!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae251357aac4dab%3A0x190ed0b026ee611a!2sMount%20Clifford%20Range!5e0!3m2!1ssi!2slk!4v1675655996152!5m2!1ssi!2slk" width="600" height="450" 
                 style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </div>
-
-    <div class="container"><div class="row"><div class="col-6"><p>Hello</p></div><div class="col-6"><p>world></div></div></div>
+</div> 
+    
     
 <?php require('../Shared/footer.php') ?>
-</div>    
+   
     
 
