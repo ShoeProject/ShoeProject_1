@@ -105,10 +105,11 @@ $user_logged = false;
 
 				</ul>
 				<ul class="navbar-nav">
+					<!--
 					<div class="d-flex my-2 my-lg-0">
 						<input id="searchInput" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 						<button id="searchBtn" class="btn btn-outline-light m-2 my-sm-0" type="button">Search</button>
-					</div>
+					</div>-->
 					
 				</ul>
 				<ul class="navbar-nav">

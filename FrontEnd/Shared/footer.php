@@ -22,14 +22,18 @@
                     <li class="fw-bold my-2 text-white">Partnership</li>
                     <li> <a href="#" class="text-decoration-none text-white">Website</a> </li>
                     <li> <a href="#" class="text-decoration-none text-white"> Social Media</a></li>
-                    <li> <a href="#" class="text-decoration-none text-white">Branding</a> </li>
+                    <!--<li> <a href="#" class="text-decoration-none text-white">Branding</a> </li>-->
                 </ul>
             </div>
             <div class="col-md-2">
                 <ul class="list-unstyled">
-                    <li class="fw-bold my-2 text-white">About</li>
-                    <li> <a href="#" class="text-decoration-none text-white">Our Project</a> </li>
-                    <li> <a href="#" class="text-decoration-none text-white">Careers</a> </li>
+                <li class="fw-bold my-2 text-white"><a href="<?php echo $server; ?>FrontEnd/component/aboutUs.php" class="text-decoration-none text-white">About US</a></li>
+                <li> <i class ="text-white">OUR VISION </i></li>
+                <li> <b><i class ="text-white">To Have a Global Footprint.</i></b></li>
+                <!--<li> <a href="#" class="text-decoration-none text-white">Our Projec</li>
+                    <li> <a href="#" class="text-decoration-none text-white">Careers</a> </li>-->
+                    
+
 
                 </ul>
             </div>
