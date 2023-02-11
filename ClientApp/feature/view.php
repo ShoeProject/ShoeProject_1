@@ -57,12 +57,12 @@ $res = $dbConn->executeQuery($ReadSql);
 									<td><?php echo $r['item_color']; ?></td>
 									<td>
 										<a href="update.php?id=<?php echo $r['id']; ?>"><button type="button" class="btn btn-info">Edit</button></a>
-										<button type="button" class="btn btn-danger btn-xs" data-bs-toggle="modal" data-bs-target="#myModal">
+										<button type="button" class="btn btn-danger btn-xs" data-bs-toggle="modal" data-bs-target="#myModal_<?php echo $r['id']; ?>">
   Delete
 </button>
 
 <!-- The Modal -->
-<div class="modal" id="myModal">
+<div class="modal" id="myModal_<?php echo $r['id']; ?>">
   <div class="modal-dialog">
     <div class="modal-content">
 
