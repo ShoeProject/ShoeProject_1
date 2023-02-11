@@ -22,7 +22,27 @@ window.addEventListener("load", function() {
 // 	btnAdd.addEventListener('click', addProduct);
 // });
 
+function removeFromCart(id){
+	const pid = id;
+	let prod = JSON.parse(localStorage.getItem('myCart')) || [];	
 
+	let productExists = false;
+	// check if a product already exist in the cart
+	for (let i = 0; i < prod.length; i++) {
+		if (prod[i]['p_id'] === pid) {
+			prod.splice(i, 1);	
+			break;
+		}
+	}	
+	
+	removeFromDb(pid);		
+
+
+
+	localStorage.setItem('myCart', JSON.stringify(prod));	
+	setCartCount(prod.length);
+	//	
+}
 
 function addProduct(id) {
 	const pid = id;
@@ -51,8 +71,8 @@ function addProduct(id) {
 	}
 	
 	if(productExists){
-		updateToDb(pid);
-		console.log("update cart");
+		// updateToDb(pid);
+		// console.log("update cart");
 	}
 
 	localStorage.setItem('myCart', JSON.stringify(prod));
@@ -92,6 +112,17 @@ function updateToDb(data){
             // Handle response from PHP function
     }};
     xhr.send(); 
+}
+
+function removeFromDb(data){
+	var xhr = new XMLHttpRequest();
+    xhr.open("GET", "http://localhost/shoeproject_1/Logic/CartLogic/removecart.php?data="+data, true);
+    xhr.onreadystatechange = function() {
+    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+        // Handle response from PHP function
+		location.reload();
+    }};
+    xhr.send();
 }
 
   

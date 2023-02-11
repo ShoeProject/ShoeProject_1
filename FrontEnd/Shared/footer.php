@@ -1,17 +1,4 @@
-<!-- <!DOCTYPE html>
-<html> -->
 
-<!-- <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Responsive Gradient Footer</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
-</head> -->
-
-<!-- <body> -->
     <div class="footer-body">
     <div class="container-fluid   text-white p-3 mt-5" style="font-family: 'Poppins', sans-serif; background: #0f0c29;
    background: linear-gradient(to right, #24243e, #302b63, #0f0c29);">
@@ -73,6 +60,3 @@
         </div>
     </div>
     </div>
-<!-- </body> -->
-
-<!-- </html> -->
