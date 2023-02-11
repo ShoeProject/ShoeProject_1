@@ -31,7 +31,7 @@ $res = $dbConn->executeQuery($ReadSql);
 			<?php include 'sidebar.php' ?>
 			<div class="container-fluid my-4 w-75">
 				<div class="row my-2">
-					<h2> Inquiry Management Center</h2>
+					<h2> Shop - Inquiry</h2>
 				</div> 
 				<table class="table ">
 					<thead>

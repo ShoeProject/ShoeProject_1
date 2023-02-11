@@ -45,12 +45,16 @@ $result = $dbConn->executeQuery($sql);
 					<?php 
 					if($result->num_rows > 0){
 						while($row = $result->fetch_assoc()) {
-							echo "<tr>"
-							."<td>".$row['product_id']."</td>".
-							"<td>".$row['qty']."</td>".
-							"<td></td>".
-							"<td></td>".
-							"</tr>";
+					?>
+							<tr>
+								<td><?php echo $row['product_id'] ?> </td>
+								<td><?php echo $row['qty']?> </td>
+								<td><Button class='btn-danger'>+</Button> </td>
+								<td><Button class='btn-danger'>-</Button></td>
+								<td><button class="btn-danger"  onclick="removeFromCart('<?php echo $row['product_id'] ?>')">remove</button></td>
+							</tr>                            
+                        
+					<?php 
 						}
 					}
 					?>
@@ -65,4 +69,4 @@ $result = $dbConn->executeQuery($sql);
 		</button>
     </div>    
 
-<!-- <?php require($path . 'templates/footer.php') ?> -->
+<!-- <?php require($path . 'FrontEnd/shared/footer.php') ?> -->
