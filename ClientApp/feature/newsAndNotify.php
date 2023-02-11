@@ -61,10 +61,10 @@ if (isset($_POST['btnNews'])) {
                      <legend>News and Notification</legend>
                      <div class="mb-4 pt-5 w-50">
        
-                       <input type="text" id="disabledTextInput" name="news_heading" class="form-control" placeholder="News Heading">
+                       <input type="text" id="disabledTextInput" name="news_heading" class="form-control" placeholder="News Heading" required>
                      </div>
                      <div class="mb-3 pb-4 w-50">
-                       <input type="text" id="disabledTextInput" name ="news_content"class="form-control" placeholder="news Body">
+                       <input type="text" id="disabledTextInput" name ="news_content"class="form-control" placeholder="news Body" required>
        
                      </div>
 
@@ -72,8 +72,8 @@ if (isset($_POST['btnNews'])) {
               <input type="file" name="productImage" class="form-control" accept=".jpeg,.png,.gif,.jpg,.webp" placeholder="Add Image" >
               </div>
                      <div>
-                       <button type="submit" name ="btnNews"class="btn btn-warning ">ADD</button>
-                       <button type="submit" class="btn btn-warning ms-3">Reset</button>
+                       <button type="submit" name ="btnNews"class="btn btn-primary ">Add News</button>
+                       <button type="submit" class="btn btn-primary ms-3">Reset</button>
                      </div>
                    </fieldset>
                  </form>

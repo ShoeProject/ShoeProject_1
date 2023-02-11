@@ -33,21 +33,21 @@ if (isset($_POST['btncategory'])) {
 </head>
 
 <body>
-  <div class="container-fluid">
+  <div class="container-fluid ">
     <div><?php include '../shared/header.php'; ?></div>
     <div class="row flex-nowrap">
       <?php include 'sidebar.php' ?>
       <div class="col py-1">
         <div class="container-fluid">
           <!-- <form action="" method="post"><button type="submit" name="prodbtn">product</button></form> -->
-          <form action ="" method ="post">
+          <form action ="" method ="post" >
             <fieldset enabled>
               <legend>Add Category</legend>
               <div class="mb-4 pt-5 w-50">
 
                 <input type="text" id="disabledTextInput" name="categoryName" class="form-control" placeholder="Category Name">
               </div>
-              <div class="mb-3 pb-4 w-50">
+              <div class="mb-4 pb-4 w-50">
                 <input type="text" id="disabledTextInput" name="description" class="form-control" placeholder="Description">
 
               </div>

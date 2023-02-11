@@ -65,16 +65,16 @@ if(isset($_POST) & !empty($_POST)){
 
 
 
-	<div class="container">
+	<div class="container mx-3">
 	<?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
 		<h2 class="my-4">UPDATE Sub-Category</h2>
 		<form method="post" enctype="multipart/form-data">
-			<div class="form-group">
-                <label>Name</label>
+			<div class="form-group mb-4  w-50">
+                <label>Sub Category Name</label>
 				<input type="text" class="form-control" name="sub_category_name" value="<?php echo $r['name'];?>" required/>
             </div> 
-            <div class="form-group">
-                <label>Serial Number</label>
+            <div class="form-group mb-4  w-50">
+                <label>Sub Category Description</label>
 				<input type="text" class="form-control" name="sub_category_description" value="<?php echo $r['description'];?>" required/>
             </div> 
            

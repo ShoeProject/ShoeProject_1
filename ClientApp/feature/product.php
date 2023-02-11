@@ -70,31 +70,37 @@ if (isset($_POST['prodbtn'])) {
             <fieldset enabled>
               <legend>Add Products</legend>              
               <div class="mb-4 pt-5">
-                <input type="text" name="name" class="form-control" placeholder="Brand Name">
+                <input type="text" name="name" class="form-control" placeholder="Brand Name" required>
               </div>
               <div class="mb-4">
-                <input type="text" name="code" class="form-control" placeholder="Product Code">
+                <input type="text" name="code" class="form-control" placeholder="Product Code" required>
               </div>
               <div class="mb-4">
-              <input type="file" name="productImage" class="form-control" accept=".jpeg,.png,.gif,.jpg,.webp" placeholder="Add Image" >
+              <input type="file" name="productImage" class="form-control" accept=".jpeg,.png,.gif,.jpg,.webp" placeholder="Add Image" required>
               </div>
               <div class="mb-4">
-                <input type="text" name="price" class="form-control" placeholder="Item Price">
+                <input type="text" name="price" class="form-control" placeholder="Item Price" required>
               </div>
               <div class="mb-4">
-                <input type="text" name="itemSize" class="form-control" placeholder="Item Size">
+                <input type="text" name="itemSize" class="form-control" placeholder="Item Size" required>
               </div>
               <div class="mb-4">
                 <label for="disabledSelect" class="form-label">Item Color</label>
-                <select name="itemColor" class="form-select">
+                <select name="itemColor" class="form-select" required>
                   <option>Red</option>
                   <option>Green</option>
                   <option>Blue</option>
+                  <option>Black</option>
+                  <option>White</option>
+                  <option>Navy Blue</option>
+                  <option>Orange</option>
+                  <option>Brown</option>
+                  <option>Pink</option>
                 </select>
               </div>
               <div class="mb-4">
                 <label for="disabledSelect" class="form-label">Category Id</label>
-                <select name="categoryId" class="form-select">
+                <select name="categoryId" class="form-select" required>
                 <?php
 						        if ($res->num_rows > 0) {
 							      while ($r = $res->fetch_assoc()) {
@@ -107,7 +113,7 @@ if (isset($_POST['prodbtn'])) {
               </div>
               <div class="mb-4">
                 <label for="disabledSelect" class="form-label">Sub Category Id</label>
-                <select name="subCatergoryId" class="form-select">
+                <select name="subCatergoryId" class="form-select" required>
                 <?php
 						        if ($res2->num_rows > 0) {
 							      while ($r = $res2->fetch_assoc()) {
@@ -117,8 +123,8 @@ if (isset($_POST['prodbtn'])) {
 						      } ?>
                 </select>
               </div>          
-              <button type="submit" name="prodbtn" class="btn btn-warning">Submit</button>
-              <button type="submit" class="btn btn-warning">Reset</button>
+              <button type="submit" name="prodbtn" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary">Reset</button>
             </fieldset>
           </form>
         </div>
