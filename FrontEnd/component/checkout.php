@@ -12,6 +12,7 @@ include $db_path.'DBConnect.php';
 // show all details related to customer and product 
 // show confirm button to confirm chekcout 
 // if the confirm button clicked the product quantity and should be reduced in the cart as well
+
 $cart_id = $_GET['cart_id'];
 
 $sql = "select * from cart where id ='$cart_id'";

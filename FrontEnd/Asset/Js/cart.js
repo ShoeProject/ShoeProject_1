@@ -7,6 +7,9 @@
 window.addEventListener("load", function() {
 	cart = document.querySelector('.cart span');
 	const btnCheckout = document.querySelector('.btn-checkout'); // cart checkout
+	let prod = JSON.parse(localStorage.getItem('myCart')) || [];	
+	localStorage.setItem('myCart', JSON.stringify(prod));	
+	setCartCount(prod.length);
 });
 
 // window.onbeforeunload = function() {
