@@ -49,13 +49,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <h2  >Inquiry </h2>
         <p class="mt-4 ">SEND A MESSAGE</p>
         <form method="post"> 
-            <div class="form-group">
+            <div class="form-group w-50 mb-4">
                 <label>Inquiry Subject</label>
-                <input type="text" name="inquirySubject" class="form-control" value="" required >
+                <input type="text" name="inquirySubject" placeholder="Enter your Inquiry Subject"class="form-control" value="" required >
             </div> 
-            <div class="form-group">
+            <div class="form-group w-50 mb-4">
                 <label>Inquiry Message</label>
-                <input type="textarea" name="message" rows="4" cols="30" class="form-control" value="" required >
+                <textarea class="form-control" name="address" rows="3" placeholder="Enter your Inquiry" required></textarea>
           
             <div>
                 &nbsp;
@@ -81,6 +81,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </div>
+
+    <div class="container"><div class="row"><div class="col-6"><p>Hello</p></div><div class="col-6"><p>world></div></div></div>
     
 <?php require('../Shared/footer.php') ?>
 </div>    
