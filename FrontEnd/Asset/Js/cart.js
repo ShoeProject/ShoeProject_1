@@ -25,14 +25,8 @@ window.addEventListener("load", function() {
 
 
 function addProduct(id) {
-	console.log("addProduct");
 	const pid = id;
-	let prod = JSON.parse(localStorage.getItem('myCart')) || [];
-
-	const item = {
-		p_id: pid,
-		quantity: 1
-	};
+	let prod = JSON.parse(localStorage.getItem('myCart')) || [];	
 
 	let productExists = false;
 	// check if a product already exist in the cart
@@ -42,15 +36,27 @@ function addProduct(id) {
 			productExists = true;
 			break;
 		}
-	}
+	}	
 
 	if (!productExists) {
-		prod.push(item);
+		const item = {
+			p_id: pid,
+			quantity: 1
+		};
+
+		prod.push(item);		
+		setCartCount(prod.length);    
+    	saveToDb(item.p_id);
+		console.log("save cart");
+	}
+	
+	if(productExists){
+		updateToDb(pid);
+		console.log("update cart");
 	}
 
 	localStorage.setItem('myCart', JSON.stringify(prod));
-	setCartCount(prod.length);    
-    saveToDb(item.p_id);
+	
 }
 
 function setCartCount(len){
@@ -68,15 +74,24 @@ function setCartCount(len){
 // }
 
 function saveToDb(data){    
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "http://localhost/shoeproject_1/Logic/CartLogic/savecart.php?data="+data, true);
-       // console.log("http://localhost/shoeproject_1/Logic/CartLogic/savecart.php?data="+data);
-        xhr.onreadystatechange = function() {
-        if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", "http://localhost/shoeproject_1/Logic/CartLogic/savecart.php?data="+data, true);
+	xhr.onreadystatechange = function() {
+	if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+		// Handle response from PHP function
+	}};
+	xhr.send();    
+	//window.location.href = "yourphpfile.php?action=callFunction";
+}
+
+function updateToDb(data){
+	var xhr = new XMLHttpRequest();
+    xhr.open("GET", "http://localhost/shoeproject_1/Logic/CartLogic/updatecart.php?data="+data, true);
+    xhr.onreadystatechange = function() {
+    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
             // Handle response from PHP function
-        }};
-        xhr.send();    
-        //window.location.href = "yourphpfile.php?action=callFunction";
+    }};
+    xhr.send(); 
 }
 
   
