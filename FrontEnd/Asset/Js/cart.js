@@ -1,69 +1,37 @@
 
-let products = document.querySelectorAll('.product');
-	console.log(products);
-let	cart= document.querySelector('.cart span');
-	console.log(cart);	
+// let products = document.querySelectorAll('.product');
+// 	console.log(products);
 
-// window.addEventListener("load", function() {
+// 	console.log(cart);	
 
-// });
-
-products.forEach(function (element) {
-	btnAdd = element.querySelector('.buy-button');
-	btnAdd.addEventListener('click', addProduct);
+window.addEventListener("load", function() {
+	cart = document.querySelector('.cart span');
+	const btnCheckout = document.querySelector('.btn-checkout'); // cart checkout
 });
 
-function populate() { // get items on page load
-	let prod = JSON.parse(localStorage.getItem('myCart')) || 0;
+// window.onbeforeunload = function() {
+// 	// let prod = JSON.parse(localStorage.getItem('myCart')) || [];
+// 	// localStorage.setItem('myCart', JSON.stringify(prod));
+// 	console.log(prod.length);
+// 	setCartCount(prod.length);
+// };
+  
 
-	if (prod) cart.textContent = prod.length + ' ';
-
-	if (!cartProducts || prod == 0) return;
-
-	let total = 0;
-	prod.forEach(function (el) {
-		let t = el.price.split('').filter(a => !isNaN(a)).join(''); //convert to number
-		total += (Number(t) * el.quantity);
-	});
-
-	prod.forEach(function (p) { // fill the cart products
-
-		const el = document.createElement('tr');
-		el.innerHTML = (` 
-			<th>${p.p_id}</th>
-			<td>${p.title}</td>
-			<td>${p.quantity}</td>
-			<td>${p.price}</td>
-		`);
-		cartProducts.appendChild(el);
-	});
-
-	const totalContainer = document.createElement('div');
-	totalContainer.style.fontSize = '1.2rem';
-	totalContainer.textContent = `Total : $${total}`;
-
-	const wrapper = document.querySelector('.wrapper');
-	wrapper.insertBefore(totalContainer, btnCheckout);
-
-};
+// products.forEach(function (element) {
+// 	btnAdd = element.querySelector('.buy-button');
+// 	btnAdd.addEventListener('click', addProduct);
+// });
 
 
-function addProduct() {
+
+function addProduct(id) {
 	console.log("addProduct");
-	const pid = this.dataset.pid;
-	const parent = this.parentNode;
-	const productBody = parent.parentNode;
-
-	const title = productBody.querySelector('.card-title').innerHTML;
-	const price = parent.querySelector('.price').innerHTML;
-
+	const pid = id;
 	let prod = JSON.parse(localStorage.getItem('myCart')) || [];
 
 	const item = {
 		p_id: pid,
-		title,
-		quantity: 1,
-		price
+		quantity: 1
 	};
 
 	let productExists = false;
@@ -81,11 +49,23 @@ function addProduct() {
 	}
 
 	localStorage.setItem('myCart', JSON.stringify(prod));
-	cart.textContent = ' ' + prod.length;    
+	setCartCount(prod.length);    
     saveToDb(item.p_id);
-
-	//console.log(localStorage.getItem('myCart')); //    
 }
+
+function setCartCount(len){
+	cart.textContent = ' ' + len;    
+}
+
+// function checkout(argument) {
+// 	localStorage.removeItem('myCart');
+
+// 	cartProducts.innerHTML = '';
+// 	cart.textContent = '0 ';
+// }
+// if (btnCheckout) {
+// 	btnCheckout.addEventListener('click', checkout);
+// }
 
 function saveToDb(data){    
         var xhr = new XMLHttpRequest();
@@ -98,31 +78,5 @@ function saveToDb(data){
         xhr.send();    
         //window.location.href = "yourphpfile.php?action=callFunction";
 }
-
-function updateDb(data){
-    
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "http://localhost/Logic/CartLogic/savecart.php", true);
-    xhr.setRequestHeader("Content-Type", "application/json");
-
-    xhr.send(data);
-
-    xhr.onreadystatechange = function() {
-    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-        // Handle response from PHP function
-    }
-    };
-
-}
-
-// function checkout(argument) {
-// 	localStorage.removeItem('myCart');
-
-// 	cartProducts.innerHTML = '';
-// 	cart.textContent = '0 ';
-// }
-// if (btnCheckout) {
-// 	btnCheckout.addEventListener('click', checkout);
-// }
 
   

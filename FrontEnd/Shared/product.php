@@ -10,16 +10,18 @@
 
 				<div style="display: flex; justify-content: space-between; align-items: center;">
 					<div style="font-weight: 600;">Rs. <span class="price"><?php echo $r['item_price']; ?></span></div>
-
-					<!-- Button add to cart -->
-					<button data-pid="<?php echo $r['id']; ?>" class="btn-2 buy-button" id="add-cart-1234">
+					<!-- <a href="<?php echo $server; ?>frontend/shared/addCart.php?id=<?php echo $r['id']; ?>" >					 -->
+					<button  class="btn-2 buy-button" id="add-cart-<?php echo $r['id']; ?>" onclick="addProduct(this.id)">
 						<span  class="text-white">
 							<i class="fa fa-shopping-cart text-white"></i>
 							Add to cart
 						</span>
 					</button>
+					<!-- a> -->
 				</div>
 			</div>
 		
 	</div>
 </div>
+
+<!-- data-pid="<?php echo $r['id']; ?>" -->
