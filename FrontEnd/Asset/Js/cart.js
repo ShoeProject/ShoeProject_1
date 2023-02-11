@@ -1,29 +1,37 @@
-var cart;
+
+// let products = document.querySelectorAll('.product');
+// 	console.log(products);
+
+// 	console.log(cart);	
 
 window.addEventListener("load", function() {
-    // your code here
-    document.getElementById("add-cart-1234").addEventListener("click", addProduct);
-    //const data = element.dataset.pid;
-    cart= document.querySelector('.cart span');
-    console.log(cart);
-
+	cart = document.querySelector('.cart span');
+	const btnCheckout = document.querySelector('.btn-checkout'); // cart checkout
 });
 
-function addProduct() {
-	const pid = this.dataset.pid;
-	const parent = this.parentNode;
-	const productBody = parent.parentNode;
+// window.onbeforeunload = function() {
+// 	// let prod = JSON.parse(localStorage.getItem('myCart')) || [];
+// 	// localStorage.setItem('myCart', JSON.stringify(prod));
+// 	console.log(prod.length);
+// 	setCartCount(prod.length);
+// };
+  
 
-	const title = productBody.querySelector('.card-title').innerHTML;
-	const price = parent.querySelector('.price').innerHTML;
+// products.forEach(function (element) {
+// 	btnAdd = element.querySelector('.buy-button');
+// 	btnAdd.addEventListener('click', addProduct);
+// });
 
+
+
+function addProduct(id) {
+	console.log("addProduct");
+	const pid = id;
 	let prod = JSON.parse(localStorage.getItem('myCart')) || [];
 
 	const item = {
 		p_id: pid,
-		title,
-		quantity: 1,
-		price
+		quantity: 1
 	};
 
 	let productExists = false;
@@ -41,11 +49,23 @@ function addProduct() {
 	}
 
 	localStorage.setItem('myCart', JSON.stringify(prod));
-	cart.textContent = ' ' + prod.length;    
+	setCartCount(prod.length);    
     saveToDb(item.p_id);
-
-	//console.log(localStorage.getItem('myCart')); //    
 }
+
+function setCartCount(len){
+	cart.textContent = ' ' + len;    
+}
+
+// function checkout(argument) {
+// 	localStorage.removeItem('myCart');
+
+// 	cartProducts.innerHTML = '';
+// 	cart.textContent = '0 ';
+// }
+// if (btnCheckout) {
+// 	btnCheckout.addEventListener('click', checkout);
+// }
 
 function saveToDb(data){    
         var xhr = new XMLHttpRequest();
@@ -58,31 +78,5 @@ function saveToDb(data){
         xhr.send();    
         //window.location.href = "yourphpfile.php?action=callFunction";
 }
-
-function updateDb(data){
-    
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "http://localhost/Logic/CartLogic/savecart.php", true);
-    xhr.setRequestHeader("Content-Type", "application/json");
-
-    xhr.send(data);
-
-    xhr.onreadystatechange = function() {
-    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-        // Handle response from PHP function
-    }
-    };
-
-}
-
-// function checkout(argument) {
-// 	localStorage.removeItem('myCart');
-
-// 	cartProducts.innerHTML = '';
-// 	cart.textContent = '0 ';
-// }
-// if (btnCheckout) {
-// 	btnCheckout.addEventListener('click', checkout);
-// }
 
   

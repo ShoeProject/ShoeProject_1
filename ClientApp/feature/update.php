@@ -15,7 +15,7 @@ $r =$res->fetch_assoc();
 
 if(isset($_POST) & !empty($_POST)){
 	$name = ($_POST['name']);
-	$serial_number = ($_POST['serial_number']);
+	$code = ($_POST['code']);
 	$item_price = ($_POST['item_price']);
     $item_color =($_POST['item_color']);
     $item_size =($_POST['item_size']);
@@ -36,7 +36,7 @@ if(isset($_POST) & !empty($_POST)){
     // }
 
     // Execute query
-	$editquery = "UPDATE product SET name='$name',serial_no ='$serial_number',item_price=$item_price, item_color='$item_color', item_size=$item_size WHERE id='$id'";
+	$editquery = "UPDATE product SET name='$name',code ='$code',item_price=$item_price, item_color='$item_color', item_size=$item_size WHERE id='$id'";
 	
 	$res = $dbConn->executeQuery($editquery);
     echo "<script>alert('Database execute succeed..!');</script>";
@@ -67,28 +67,28 @@ if(isset($_POST) & !empty($_POST)){
 
 
 
-	<div class="container">
+	<div class="container mx-3">
 	<?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
 		<h2 class="my-4">Update Product</h2>
-		<form method="post" enctype="multipart/form-data">
-			<div class="form-group">
+		<form method="post" enctype="multipart/form-data" >
+			<div class="form-group mb-4">
                 <label>Name</label>
 				<input type="text" class="form-control" name="name" value="<?php echo $r['name'];?>" required/>
             </div> 
-            <div class="form-group">
-                <label>Serial Number</label>
-				<input type="text" class="form-control" name="serial_number" value="<?php echo $r['serial_no'];?>" required/>
+            <div class="form-group mb-4">
+                <label>Product Code</label>
+				<input type="text" class="form-control" name="code" value="<?php echo $r['code'];?>" required/>
             </div> 
-            <div class="form-group">
+            <div class="form-group mb-4">
                 <label>Item Price</label>
 				<input type="text" class="form-control" name="item_price" value="<?php echo $r['item_price'];?>"/>
             </div> 
-            <div class="form-group">
+            <div class="form-group mb-4">
                 <label>Item Color</label>
 				<input type="text" class="form-control" name="item_color" value="<?php echo $r['item_color'];?>"/>
             </div>
 
-            <div class="form-group">
+            <div class="form-group mb-4">
                 <label>Item Size</label>
 				<input type="text" class="form-control" name="item_size" value="<?php echo $r['item_size'];?>"/>
             </div>

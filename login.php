@@ -109,13 +109,25 @@ if (isset($_POST['btnsubmit'])){
             $_SESSION["loggedin"] = true;
             $_SESSION["id"] = $user['id'];
             $_SESSION["customer_id"] = $user['customer_id'];
+            $_SESSION["employee_id"] = $user['employee_id'];
             $_SESSION["email"] = $param_email;
-            $_SESSION["role"] = "Customer";                       
+         
+           
+                                 
             
             // Redirect user to welcome page
             $url = 'http://' . $_SERVER['HTTP_HOST']; // Get server
-            $url .= "/ShoeProject_1/FrontEnd/";
-            header('Location: ' . $url, TRUE, 302);
+            if(!empty($user['customer_id'])){
+                $_SESSION["role"] = "Customer";   
+                $url .= "/ShoeProject_1/FrontEnd/";
+                header('Location: ' . $url, TRUE, 302);
+
+            }else{
+                $_SESSION["role"] = "Staff";
+                $url .= "/ShoeProject_1/ClientApp/feature/";
+                header('Location: ' . $url, TRUE, 302);
+            }
+            
         } else {
             //$password_err = "The password you entered was not valid.";
             echo '<script>alert("Password is invalid...!")</script>';
@@ -141,12 +153,12 @@ include $path."/frontend/shared/header.php";
                 <form method="POST" >
                     <div class="form-row">
                         <div class="col-lg-7">
-                            <input name="email" type="email" placeholder="Email Address" class="form-control my-3 p-4" />
+                            <input name="email" type="email" placeholder="Email Address" class="form-control my-3 p-4" required/>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-lg-7">
-                            <input name="password" type="password" placeholder="Password" class="form-control my-3 p-4" />
+                            <input name="password" type="password" placeholder="Password" class="form-control my-3 p-4" required/>
                         </div>
                     </div>
                     <div class="form-row">
@@ -155,8 +167,10 @@ include $path."/frontend/shared/header.php";
                         </div>
                     </div>
                 </form>
-                <a href="<?php echo $server; ?>FrontEnd/Shared/register.php"><div class="">Register</div></a>
-                
+                <div class="font-italic">
+                <p>If you haven't account?</p>
+                <a href="<?php echo $server; ?>FrontEnd/Shared/register.php"><div class="">Click Register</div></a>
+                </div>
             </div>
         </div>
     </div>

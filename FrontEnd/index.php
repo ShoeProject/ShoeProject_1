@@ -11,8 +11,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
     exit;
 }
 $user_logged = true;
-// Initialize the session
-session_start();
+
 ?>
 <?php require('Shared/header.php') ?>
 <div class="d-flex mt-4 mx-4 p-4">

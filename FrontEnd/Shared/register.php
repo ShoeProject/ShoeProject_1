@@ -15,14 +15,15 @@ $email_err = $password_err = $confirm_password_err = "";
 $connection = $dbConn->getConnection();
  
 // Processing form data when form is submitted
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+if(isset($_POST['SubmitUser'])){
     
 
     $name = trim($_POST["name"]);
     $age = trim($_POST["age"]);
     $address = $_POST["address"];
     $phoneNumber = trim($_POST["phone"]);
-    $CustomerId = "";
+    $email= $_POST["email"];
+    $password = $_POST["password"];
 
     $customerInsert = "insert into customer(name, age, address, phone_no) values('$name','$age','$address','$phoneNumber');";
     $searchCustomerId = "select id from customer where name='$name' and age='$age' and address='$address' and phone_no='$phoneNumber'";
@@ -34,7 +35,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         if($result->num_rows >0){
             $row = $result->fetch_assoc();
             $CustomerId = $row['id'];
-
+            $userSql = "insert into users (customer_id,email,password) values('$CustomerId','$email','$password')";
+            if($dbConn->executeQuery($userSql)){
+                echo `<div class="alert alert-success" role="alert"> You are sucessfully registered. </div>`;
+                header('location: /ShoeProject_1/login.php');
+            }
+            else{
+                echo `<div class="alert alert-success" role="alert"> Something goes wrong try again </div>`;   
+            }
         }    
         
 
@@ -141,40 +149,39 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
 <div class="container mt-5 w-50">
-    <form method="post">
-      <div class="form-group">
+    <form method="POST">
+      <div class="form-group ">
             <label>Name</label>
-            <input type="text" name="name" class="form-control" placeholder="Enter your name">
+            <input type="text" name="name" class="form-control" placeholder="Enter your name" required>
       </div>  
-      <div class="form-group">
+      <div class="form-group mb-2">
         <label for="age">Age</label>
-        <input type="number" class="form-control" name="age" placeholder="Enter your age">
+        <input type="number" class="form-control" name="age" placeholder="Enter your age" required>
       </div>
-      <div class="form-group">
+      <div class="form-group mt-2">
         <label for="address">Address</label>
-        <textarea class="form-control" name="address" rows="3" placeholder="Enter your address"></textarea>
+        <textarea class="form-control" name="address" rows="3" placeholder="Enter your address" required></textarea>
       </div>
-      <div class="form-group">
+      <div class="form-group mb-2">
         <label for="phone">Phone Number</label>
-        <input type="tel" class="form-control" name="phone" placeholder="Enter your phone number">
+        <input type="tel" class="form-control" name="phone" placeholder="Enter your phone number" required>
       </div>
-      <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
+      <div class="form-group mb-2 <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
         <label>Email</label>
-        <input type="email" name="email" class="form-control" value="<?php echo $email; ?>" required>
-        <span class="help-block"><?php echo $email_err; ?></span>
+        <input type="email" name="email" placeholder="Enter the email"class="form-control" value="<?php echo $email; ?>" required>
+        <span class="help-block text-danger"><?php echo $email_err; ?></span>
       </div> 
-      <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+      <div class="form-group mb-2 <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
         <label>Password</label>
-        <input type="password" name="password" class="form-control" value="<?php echo $password; ?>" required>
+        <input type="password" name="password" placeholder="Enter the password"class="form-control" value="<?php echo $password; ?>" required>
         <span class="help-block"><?php echo $password_err; ?></span>
      </div>
-     <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+     <div class="form-group mb-2 <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
         <label>Password</label>
-        <input type="password" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>" required>
+        <input type="password" name="confirm_password" class="form-control" placeholder="Retype the password"value="<?php echo $confirm_password; ?>" required>
         <span class="help-block"><?php echo $confirm_password_err; ?></span>
      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-      
+      <button  type="submit" name="SubmitUser" class="btn btn-primary">Submit</button>
     </form>
   </div>
     
