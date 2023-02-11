@@ -1,6 +1,6 @@
 <?php
 // Include config file
-$server = 'http://' . $_SERVER['SERVER_NAME'] . '/shoeproject_1'; 
+$server = 'http://' . $_SERVER['SERVER_NAME'] . '/Shoeproject_1'; 
 $path = $_SERVER['DOCUMENT_ROOT'];
 $path .= "/ShoeProject_1";
 $db_path = $path . "/Logic/DataAccess/";
@@ -25,7 +25,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             if(mysqli_stmt_execute($stmt)){
                 // Redirect to login page
-                header("location: index.php");
+                header("location: /ShoeProject_1/login.php");
             } else{
                 echo "Something went wrong. Please try again later.\n";
                 print_r($stmt->error_list);
@@ -46,17 +46,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
     <div class="mx-auto p-5">
-        <h2  >Inqiry </h2>
+        <h2  >Inquiry </h2>
         <p class="mt-4 ">SEND A MESSAGE</p>
-        <form method="post">
-            <div class="form-group">
-                <label>Name</label>
-                <input type="text" name="name" class="form-control col-sm-3" value="" required >
-            </div>
-            <div class="form-group">
-                <label>Contact Number</label>
-                <input type="text" name="contact" class="form-control" value="" required >
-            </div>  
+        <form method="post"> 
             <div class="form-group">
                 <label>Inquiry Subject</label>
                 <input type="text" name="inquirySubject" class="form-control" value="" required >
@@ -75,11 +67,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
            
         </form>
     </div>
-    <div class="mt-4 text-end ">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.524669482761!2d79.99932505045464!3d6.827513195041341!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae251357aac4dab%3A0x190ed0b026ee611a!2sMount%20Clifford%20Range!5e0!3m2!1ssi!2slk!4v1675655996152!5m2!1ssi!2slk" width="600" height="450" 
-        style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div >
+        <div>
+            <ul class="list-unstyled">
+                <li class="fw-bold my-2 text-white"><a href="<?php echo $server; ?>FrontEnd/component/inquiry.php" class="text-decoration-none text-white">Contact US</a></li>
+                <li> <i class ="text-black">&nbsp;&nbsp;&nbsp;260,&nbsp;Colombo,&nbsp;Sri Lanka </i></li>
+                <li> <i class ="text-black">&nbsp;&nbsp;GenShoes@gmail.com </i></li>
+                <li> <i class ="text-black">&nbsp;&nbsp;011 &nbsp;296 &nbsp;6520 </i></li>
+            </ul>
+        </div>
+        <div class="mt-4 text-end ">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.524669482761!2d79.99932505045464!3d6.827513195041341!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae251357aac4dab%3A0x190ed0b026ee611a!2sMount%20Clifford%20Range!5e0!3m2!1ssi!2slk!4v1675655996152!5m2!1ssi!2slk" width="600" height="450" 
+                style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
     </div>
-<div>    
+    
 <?php require('../Shared/footer.php') ?>
 </div>    
     

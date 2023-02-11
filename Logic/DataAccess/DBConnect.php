@@ -24,8 +24,10 @@ class DBConnect{
 			return $result;
 		} else {
 			echo "Error: " . $this->conn->error;
+			return null;
+        
 		}
-		return $result;
+		//return $result;
 	}
 
 	function closeConn(){

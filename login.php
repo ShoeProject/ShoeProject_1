@@ -102,10 +102,13 @@ if (isset($_POST['btnsubmit'])){
         if ($param_password == $user['password']) {
             //Password is correct, so start a new session
             session_start();
+
+
             
             // Store data in session variables
             $_SESSION["loggedin"] = true;
             $_SESSION["id"] = $user['id'];
+            $_SESSION["customer_id"] = $user['customer_id'];
             $_SESSION["email"] = $param_email;
             $_SESSION["role"] = "Customer";                       
             

@@ -10,11 +10,11 @@ if (isset($_POST['btncreatemember'])) {
   $name = $_POST['name'];
   $address = $_POST['address'];
   $contact = $_POST['contact'];
-  $age = $_POST['age'];
- 
+  $username = $_POST['username'];
+  $password = $_POST['password'];
   
  
-  $query = "INSERT INTO employee (name, address,phone_no,age) VALUES ('$name','$address','$contact','$age')";
+  $query = "INSERT INTO employee (name, address,phone_no,password,username) VALUES ('$name','$address','$contact','$password','$username')";
   
   if ($dbConn->executeQuery($query) === true) {
     echo "<script>alert('Database execute succeed..!');</script>";
@@ -23,9 +23,6 @@ if (isset($_POST['btncreatemember'])) {
     echo "Error: " . $query . "<br>" . $dbConn->error;
   }	
 }
-?>
-
-
 ?>
 <!DOCTYPE html>
 
@@ -59,18 +56,21 @@ if (isset($_POST['btncreatemember'])) {
                 <input type="text" name="contact" class="form-control" placeholder="phonenumber">
               </div>
               <div class="mb-4">
-                <input type="text" name="age" class="form-control" placeholder="age">
+                <input type="text" name="username" class="form-control" placeholder="username">
               </div>
               <div class="mb-4">
+                <input type="password" name="password" class="form-control" placeholder="password">
+              </div>
+              <!--<div class="mb-4">
                 <label for="disabledSelect" class="form-label">User Privilege</label>
                 <select name="categoryId" class="form-select">
                   <option>Sales person</option>
                   <option>Stock Keeper</option>
-                </select>
+                </select> -->
               </div>
               <div class="sizebtn">
                 <button type="submit" name="btncreatemember" class="btn btn-warning">Create Member</button>
-                <button type="submit" name="updbtn" class="btn btn-warning">Update Member</button>
+                <!-- <button type="submit" name="updbtn" class="btn btn-warning">Update Member</button> -->
                 <button type="submit" class="btn btn-warning ">Reset</button>
               </div>
             </fieldset>
