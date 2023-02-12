@@ -72,7 +72,7 @@ if($res->num_rows > 0 ){
 $row =$res->fetch_assoc();
 
 
-if(isset($_POST)){
+if(isset($_POST['ordersbt'])){
     foreach ($productIds as $x => $value) {
         $cartSql = "delete from cart where product_id ='$value'";
         $dbConn->executeQuery($cartSql);
@@ -91,9 +91,10 @@ if(isset($_POST)){
     echo "<script>clearmyCartLocalStorage</script>";
 
     $url = $server."FrontEnd/component/order.php";
-    header('Location: ' . $url, TRUE, 302);
+    header('Location: /ShoeProject_1/FrontEnd/component/order.php', TRUE, 302);
     exit();
 }
+
 
 ?>
     <div class="container p-4">
@@ -120,7 +121,7 @@ if(isset($_POST)){
                     </div>  
 
                     <div class="text-center p-5">
-                        <button class="btn btn-block btn-outline-primary " type="submit">Place Order</button>
+                        <button name="ordersbt" class="btn btn-block btn-outline-primary " type="submit">Place Order</button>
                         
                     </div>
                 </form>
