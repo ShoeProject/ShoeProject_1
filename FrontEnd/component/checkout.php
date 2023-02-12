@@ -91,7 +91,7 @@ if(isset($_POST['ordersbt'])){
     echo "<script>clearmyCartLocalStorage</script>";
 
     $url = $server."FrontEnd/component/order.php";
-    header('Location: /ShoeProject_1/FrontEnd/component/order.php', TRUE, 302);
+    header('Location:'.$url, TRUE, 302);
     exit();
 }
 
@@ -100,7 +100,7 @@ if(isset($_POST['ordersbt'])){
     <div class="container p-4">
         <div class="card">
             <div class="card-body">
-                <form action="" id="checkout-frm">
+                <form id="checkout-frm" method="post">
                     <h4>Confirm Delivery Information</h4>
                     <div class="form-group">
                         <label for="" class="control-label">Customer Name</label>

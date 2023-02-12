@@ -20,5 +20,7 @@ include $path."FrontEnd/shared/header.php";
 
 ?>
 
+<div>place order</div>
+
 
 
