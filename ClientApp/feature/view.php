@@ -41,6 +41,7 @@ $res = $dbConn->executeQuery($ReadSql);
 							<th>Price</th>
 							<th>Item Size</th>
 							<th>Item Color</th>
+							<th>Item Quantity</th>
 							<th>Action</th>
 						</tr>
 					</thead>
@@ -55,6 +56,7 @@ $res = $dbConn->executeQuery($ReadSql);
 									<td>Rs. <?php echo $r['item_price']; ?></td>
 									<td><?php echo $r['item_size']; ?></td>
 									<td><?php echo $r['item_color']; ?></td>
+									<td><?php echo $r['item_qty']; ?></td>
 									<td>
 										<a href="update.php?id=<?php echo $r['id']; ?>"><button type="button" class="btn btn-info">Edit</button></a>
 										<button type="button" class="btn btn-danger btn-xs" data-bs-toggle="modal" data-bs-target="#myModal_<?php echo $r['id']; ?>">
