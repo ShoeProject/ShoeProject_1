@@ -17,6 +17,7 @@ if (isset($_POST['prodbtn'])) {
   $itemSize = $_POST['itemSize'];
   $itemColor = $_POST['itemColor'];
   $categoryId = $_POST['categoryId'];
+  $itemQty = $_POST['itemQty'];
   /*$sql = "SELECT id FROM product_categories where name='$categoryId'";
   $result = $dbConn->executeQuery($sql);
   if ($row = $result->fetch_row()) {
@@ -37,8 +38,8 @@ if (isset($_POST['prodbtn'])) {
       move_uploaded_file($temp_name, $fdir);
   }
   
-  $query = "INSERT INTO product (name, item_price,code,item_color,item_size,category_id,sub_category_id,image_name) VALUES
-    ('$name',$price,'$code','$itemColor',$itemSize,'$categoryId','$subCatergoryId','$image_name')";
+  $query = "INSERT INTO product (name, item_price,code,item_color,item_size,category_id,sub_category_id,image_name,item_qty) VALUES
+    ('$name',$price,'$code','$itemColor',$itemSize,'$categoryId','$subCatergoryId','$image_name','$itemQty')";
 
   if ($dbConn->executeQuery($query) === true) {
     echo "<script>alert('Database execute succeed..!');</script>";
@@ -83,6 +84,9 @@ if (isset($_POST['prodbtn'])) {
               </div>
               <div class="mb-4">
                 <input type="text" name="itemSize" class="form-control" placeholder="Item Size" required>
+              </div>
+              <div class="mb-4">
+                <input type="text" name="itemQty" class="form-control" placeholder="Item Qunatity" required>
               </div>
               <div class="mb-4">
                 <label for="disabledSelect" class="form-label">Item Color</label>
