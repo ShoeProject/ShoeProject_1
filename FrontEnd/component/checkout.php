@@ -66,12 +66,6 @@ if ($result->num_rows > 0) {
 </div>
 <?php
 
-$SelSql = "SELECT * FROM customer WHERE id='$customerId'";
-$res = $dbConn->executeQuery($SelSql);
-if($res->num_rows > 0 ){
-$row =$res->fetch_assoc();
-
-
 if(isset($_POST['ordersbt'])){
     foreach ($productIds as $x => $value) {
         $cartSql = "delete from cart where product_id ='$value'";
@@ -94,6 +88,14 @@ if(isset($_POST['ordersbt'])){
     header('Location:'.$url, TRUE, 302);
     exit();
 }
+
+$SelSql = "SELECT * FROM customer WHERE id='$customerId'";
+$res = $dbConn->executeQuery($SelSql);
+if($res->num_rows > 0 ){
+$row =$res->fetch_assoc();
+
+
+
 
 
 ?>
