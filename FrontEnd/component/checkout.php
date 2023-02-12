@@ -5,15 +5,7 @@ $path .= "/ShoeProject_1/";
 
 $db_path = $path . "/Logic/DataAccess/";
 include $db_path.'DBConnect.php';
-// include database connection
-// find checkout product detail using cart table
-// check whether product quantity less than prodcut table quantity regarding to the product id
-//  get the details from customer table using customer id in the sesssion
-// show all details related to customer and product 
-// show confirm button to confirm chekcout 
-// if the confirm button clicked the product quantity and should be reduced in the cart as well
 
-$cart_id = $_GET['cart_id'];
 
 $server = 'http://' . $_SERVER['SERVER_NAME'] . '/shoeproject_1/';
 if (session_status() == PHP_SESSION_NONE) {
@@ -21,56 +13,90 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 } 
 
+include $path."FrontEnd/shared/header.php";
 $customerId = $_SESSION['customer_id'];
+?>
+-----------------------------------
 
-$sql = "select * from cart where id ='$cart_id'";
-$result = $dbConn->executeQuery($sql);
-$cart_qty;$prod_qty;
+<?php
+$SelSql = "Select c.*,p.item_price,p.name from cart as c,product as p where c.customer_id='$customerId' AND p.id = c.product_id";
+$result = $dbConn->executeQuery($SelSql);
+$totalprice = 0.00;
+$productIds = array();
+$qtys = array();
+$prices = array();
 if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    $data = $row['product_id'];
-    $cart_qty = $row['qty'];
+?>
+<div class="container p-4">
+<div class="row bg-dark mb-1">
+    <div class="col text-light">Product Id</div>
+    <div class="col text-light">Price</div>
+    <div class="col text-light">Qty</div>
+</div>
+<?php
+    // output data of each row
+    while ($r = $result->fetch_assoc()) {
+        $totalprice += $r['item_price'];        
+        array_push($productIds,$r['product_id']);
+        array_push($qtys,$r['qty']);
+        array_push($prices,$r['item_price']);
 
-    $sql2 = "SELECT *FROM product where id='$data'";
+    
+?>
 
-    $result2 = $dbConn->executeQuery($sql2);
-    if($result2->num_rows > 0){
-        $row = $result2->fetch_assoc();
-        // echo "<tr>"."<td>".$row['qty']."</td>"."</tr>";
-        $prod_qty = $row['qty'];
 
-        
+<div class="row mb-1">
+    <div class="col bg-info"><?php echo $r['name'] ?></div>
+    <div class="col bg-info"><?php echo $r['item_price'] ?></div>
+    <div class="col bg-info"><?php echo $r['qty']?></div>
+</div>
+<?php
     }
 
-}
-
-
-if($cart_qty >$prod_qty){
     
+} else {
+    echo "<p>No Products Available</p>";
 }
-
-$customer_id = $_SESSION["customer_id"];
-
-$SelSql = "SELECT * FROM cart WHERE customerid='$id'";
-$res = $dbConn->executeQuery($SelSql);
-$r =$res->fetch_assoc();
 
 
 ?>
+<div class="row">
+    <div class="col bg-success text-light">Total Price : <?php echo $totalprice ?></div>
+</div>
+</div>
+<?php
 
-<header class="masthead">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center justify-content-center text-center">
-                <div class="col-lg-10 align-self-end mb-4 page-title">
-                	<h3 class="text-white">Checkout</h3>
-                    <hr class="divider my-4" />
+$SelSql = "SELECT * FROM customer WHERE id='$customerId'";
+$res = $dbConn->executeQuery($SelSql);
+if($res->num_rows > 0 ){
+$row =$res->fetch_assoc();
 
-                </div>
-                
-            </div>
-        </div>
-    </header>
-    <div class="container">
+
+if(isset($_POST)){
+    foreach ($productIds as $x => $value) {
+        $cartSql = "delete from cart where product_id ='$value'";
+        $dbConn->executeQuery($cartSql);
+
+        $qty = $qtys[$x];
+        $prod = $productIds[$x];
+
+        $orderSql = "insert into orders(customer_id,product_id,qty) values('$customerId','$prod','$qty')";
+        $dbConn->executeQuery($orderSql);
+        
+
+        
+
+    } 
+
+    echo "<script>clearmyCartLocalStorage</script>";
+
+    $url = $server."FrontEnd/component/order.php";
+    header('Location: ' . $url, TRUE, 302);
+    exit();
+}
+
+?>
+    <div class="container p-4">
         <div class="card">
             <div class="card-body">
                 <form action="" id="checkout-frm">
@@ -90,13 +116,15 @@ $r =$res->fetch_assoc();
                     </div>
                     <div class="form-group">
                         <label for="" class="control-label">Email</label>
-                        <input type="email" name="email" required="" class="form-control" value="<?php echo $_SESSION['login_email'] ?>">
+                        <input type="email" name="email" required="" class="form-control" value="<?php echo $_SESSION['email'] ?>">
                     </div>  
 
-                    <div class="text-center">
-                        <button class="btn btn-block btn-outline-primary">Place Order</button>
+                    <div class="text-center p-5">
+                        <button class="btn btn-block btn-outline-primary " type="submit">Place Order</button>
+                        
                     </div>
                 </form>
             </div>
         </div>
     </div>
+<?php } ?>

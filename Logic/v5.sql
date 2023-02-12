@@ -8,3 +8,9 @@ alter table customer DROP CONSTRAINT fk_feedback;
 alter table customer drop column feedback_id;
 
 alter TABLE users add constraint user_unique UNIQUE key(customer_id); 
+
+
+
+
+------------------------------------------------------------
+alter TABLE orders add column qty int;

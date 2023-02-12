@@ -1,5 +1,6 @@
 <?php 
 // Include config file
+$server = 'http://' . $_SERVER['SERVER_NAME'] . '/shoeproject_1/';
 $path = $_SERVER['DOCUMENT_ROOT'];
 $path .= "/ShoeProject_1/";
 
@@ -61,12 +62,14 @@ $result = $dbConn->executeQuery($sql);
 				</tbody>
 			</table>
         </div> 
-        <button type="button" class="btn btn-danger btn-checkout">
-			<span>
-				<i class="fa fa-shopping-cart"></i> 
-				Checkout
-			</span>
-		</button>
+		<a href="<?php echo $server ?>FrontEnd/component/checkout.php?">
+			<button type="button" class="btn btn-danger btn-checkout">
+				<span>
+					<i class="fa fa-shopping-cart"></i> 
+					Checkout
+				</span>
+			</button>
+		</a>
     </div>    
 
 <!-- <?php require($path . 'FrontEnd/shared/footer.php') ?> -->
