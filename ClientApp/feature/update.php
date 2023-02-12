@@ -13,12 +13,22 @@ $res = $dbConn->executeQuery($SelSql);
 $r =$res->fetch_assoc();
 
 
+$ReadSql1 = "SELECT * FROM product_categories";
+$res1 = $dbConn->executeQuery($ReadSql1);
+
+$ReadSql2 = "SELECT * FROM product_sub_categories";
+$res2 = $dbConn->executeQuery($ReadSql2);
+
+
 if(isset($_POST) & !empty($_POST)){
 	$name = ($_POST['name']);
 	$code = ($_POST['code']);
 	$item_price = ($_POST['item_price']);
     $item_color =($_POST['item_color']);
     $item_size =($_POST['item_size']);
+    $categoryId = $_POST['categoryId'];
+    $itemQty = $_POST['itemQty'];
+    $subCatergoryId = $_POST['subCatergoryId'];
 	// store n upload image
     // $image = $_FILES['image']['name']; 
     // $dir="../img/products/";
@@ -36,7 +46,7 @@ if(isset($_POST) & !empty($_POST)){
     // }
 
     // Execute query
-	$editquery = "UPDATE product SET name='$name',code ='$code',item_price=$item_price, item_color='$item_color', item_size=$item_size WHERE id='$id'";
+	$editquery = "UPDATE product SET name='$name',code ='$code',item_price=$item_price, item_color='$item_color', item_size=$item_size , item_qty=$itemQty WHERE id='$id'";
 	
 	$res = $dbConn->executeQuery($editquery);
     echo "<script>alert('Database execute succeed..!');</script>";
@@ -81,18 +91,60 @@ if(isset($_POST) & !empty($_POST)){
             </div> 
             <div class="form-group mb-4">
                 <label>Item Price</label>
-				<input type="text" class="form-control" name="item_price" value="<?php echo $r['item_price'];?>"/>
+				<input type="text" class="form-control" name="item_price" value="<?php echo $r['item_price'];?>"required/>
             </div> 
             <div class="form-group mb-4">
                 <label>Item Color</label>
-				<input type="text" class="form-control" name="item_color" value="<?php echo $r['item_color'];?>"/>
+				<input type="text" class="form-control" name="item_color" value="<?php echo $r['item_color'];?>"required/ >
             </div>
 
             <div class="form-group mb-4">
                 <label>Item Size</label>
-				<input type="text" class="form-control" name="item_size" value="<?php echo $r['item_size'];?>"/>
+				<input type="text" class="form-control" name="item_size" value="<?php echo $r['item_size'];?>"required/>
             </div>
-
+            <div class="mb-4">
+            <label>Item Quantity</label>
+                <input type="text" name="itemQty" class="form-control" value="<?php echo $r['item_qty'];?>" required>
+              </div>
+              <div class="mb-4">
+                <label for="disabledSelect" class="form-label">Item Color</label>
+                <select name="itemColor" class="form-select" required>
+                  <option>Red</option>
+                  <option>Green</option>
+                  <option>Blue</option>
+                  <option>Black</option>
+                  <option>White</option>
+                  <option>Navy Blue</option>
+                  <option>Orange</option>
+                  <option>Brown</option>
+                  <option>Pink</option>
+                </select>
+              </div>
+              <div class="mb-4">
+                <label for="disabledSelect" class="form-label">Category Id</label>
+                <select name="categoryId" class="form-select" required>
+                <?php
+						        if ($res1->num_rows > 0) {
+							      while ($r1 = $res1->fetch_assoc()) {
+						    ?>  
+                    <option value="<?php echo $r['id']; ?>"><?php echo $r1['name']; ?></option>
+                  <?php }
+						      } ?>
+            
+                </select>
+              </div>
+              <div class="mb-4">
+                <label for="disabledSelect" class="form-label">Sub Category Id</label>
+                <select name="subCatergoryId" class="form-select" required>
+                <?php
+						        if ($res2->num_rows > 0) {
+							      while ($r2 = $res2->fetch_assoc()) {
+						    ?>  
+                    <option value="<?php echo $r['id']; ?>" ><?php echo $r2['name']; ?></option>
+                  <?php }
+						      } ?>
+                </select>
+              </div> 
            
 			<input type="submit" class="btn btn-primary" value="Update" />
 		</form>
