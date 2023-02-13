@@ -108,7 +108,7 @@ if (isset($_POST['btnsubmit'])){
 include $path."/frontend/shared/header.php";
 ?> 
 
-<section class="Form pt-5 ">
+<section class="Form pt-5 mb-5">
     <div class="container">
         <div class="row no-gutters">            
             <div class="col-md-5">
