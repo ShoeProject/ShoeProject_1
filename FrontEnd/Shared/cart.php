@@ -62,7 +62,7 @@ $result = $dbConn->executeQuery($sql);
 				</tbody>
 			</table>
         </div> 
-		<a href="<?php echo $server ?>FrontEnd/component/checkout.php">
+		<a href="<?php echo $server ?>FrontEnd/component/checkout.php	">
 			<button type="button" class="btn btn-danger btn-checkout">
 				<span>
 					<i class="fa fa-shopping-cart"></i> 
